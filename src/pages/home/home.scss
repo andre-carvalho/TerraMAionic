@@ -1,3 +1,54 @@
 page-home {
+    ion-content {
+        @include linear-gradient(left,$green-and-blue);
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        background-size: cover;
+        background-color: transparent;
+        background-image: url('../../assets/imgs/bgfirstpage.jpeg');
+    }
 
+    .item-md {
+        background-color: transparent;
+        color: white;
+        font-weight: bolder;
+    }
+
+    .text1, .text2, .text3, .text4 {
+        text-align:center;
+        color: white;
+        font-size: medium;
+    }
+    .text2 {
+        font-size: small;
+        text-align: end;
+        text-decoration: underline;
+    }
+
+    .text4 {
+        font-size: xx-large;
+    }
+
+    .space{
+        height: 30%;
+    }
+
+    .button-md, .button-md:hover:not(.disable-hover) {
+        background-color: #ed8f03;
+    }
+
+    .eufiscal{
+        color: #ed8f03;
+        font-size: x-large;
+        text-align: center;
+        margin-left: 35%;
+        margin-right: 35%;
+        font-weight: bold;
+    }
+
+    .eufiscalborder {
+        border-bottom: solid #ed8f03 2px;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
 }

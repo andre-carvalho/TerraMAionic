@@ -1,0 +1,63 @@
+page-burnered {
+    ion-content {
+        background-color: ghostwhite;
+    }
+
+    ion-fab {
+        bottom: -25px !important;
+    }
+    button {
+        background-color: transparent;
+    }
+    ion-footer ion-toolbar ion-icon{
+        color: lightgoldenrodyellow;
+    }
+    ion-footer ion-toolbar .toolbar-background-md, ion-fab .fab-md{
+        background-color: #262b30;
+    }
+
+    .burnedtext, .text1, .text2, .textred {
+        text-align:center;
+        color: #383737;
+        font-size: medium;
+    }
+
+    .text1{
+        text-align: justify;
+    }
+
+    .textred {
+        color: red;
+        font-size: large;
+    }
+
+    .burnedtext{
+        font-size: x-large;
+        background-color: red;
+        color: #FFFFFF;
+    }
+
+    .space{
+        height: 20%;
+    }
+
+    .eufiscal{
+        color: #ed8f03;
+        font-size: x-large;
+        text-align: center;
+        margin-left: 35%;
+        margin-right: 35%;
+        font-weight: bold;
+    }
+
+    .eufiscalborder {
+        border-bottom: solid #ed8f03 2px;
+        margin-left: 10%;
+        margin-right: 10%;
+    }
+    .burnedborder {
+        border-bottom: solid #FFFFFF 2px;
+        margin-left: 40%;
+        margin-right: 40%;
+    }
+}

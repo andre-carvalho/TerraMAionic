@@ -13,7 +13,7 @@ $app-direction: ltr;
 
 
 @import "ionic.globals";
-
+@import './gradient-mixins';
 
 // Shared Variables
 // --------------------------------------------------
@@ -86,3 +86,8 @@ $colors: (
 
 @import "roboto";
 @import "noto-sans";
+
+
+$text-color:         white !default;
+$link-color:         color($colors, light) !default;
+$toolbar-background: transparent !default;

@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar>
+    <ion-buttons end>
+      <button ion-button (click)="removePicture()">
+          <ion-icon name="trash"></ion-icon>
+      </button>
+      <button ion-button (click)="takePicture()">
+        <ion-icon name="camera"></ion-icon>
+      </button>
+      <button ion-button (click)="sendDataToServer()">
+        <ion-icon name="cloud-upload"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Lista de lugares</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-card>
+    <img [src]="DomSanitizer.bypassSecurityTrustUrl(base64Image)" *ngIf="base64Image">
+    <ion-fab right top>
+      <button ion-fab mini>
+        <ion-icon name="trash"></ion-icon>
+      </button>
+    </ion-fab>
+    <ion-item>
+      <ion-label fixed>Descrição</ion-label>
+      <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+      <span item-left [innerHTML]="currentLat"></span>
+      <span item-left [innerHTML]="currentLng"></span>
+      <button ion-button icon-left clear item-end>
+        <ion-icon name="cloud-upload"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-card>
+
+</ion-content>
