@@ -1,12 +1,12 @@
 <ion-header>
   <ion-navbar>
     <ion-buttons end>
-      <button ion-button (click)="removePicture()">
-          <ion-icon name="trash"></ion-icon>
+      <!--button ion-button (click)="removePicture()">
+        <ion-icon name="trash"></ion-icon>
       </button>
       <button ion-button (click)="takePicture()">
         <ion-icon name="camera"></ion-icon>
-      </button>
+      </button-->
       <button ion-button (click)="sendDataToServer()">
         <ion-icon name="cloud-upload"></ion-icon>
       </button>
@@ -16,24 +16,60 @@
 </ion-header>
 
 <ion-content padding>
-  <ion-card>
-    <img [src]="DomSanitizer.bypassSecurityTrustUrl(base64Image)" *ngIf="base64Image">
-    <ion-fab right top>
-      <button ion-fab mini>
-        <ion-icon name="trash"></ion-icon>
-      </button>
-    </ion-fab>
-    <ion-item>
-      <ion-label fixed>Descrição</ion-label>
-      <ion-input type="text" value=""></ion-input>
-    </ion-item>
-    <ion-item>
-      <span item-left [innerHTML]="currentLat"></span>
-      <span item-left [innerHTML]="currentLng"></span>
-      <button ion-button icon-left clear item-end>
-        <ion-icon name="cloud-upload"></ion-icon>
-      </button>
-    </ion-item>
-  </ion-card>
+  <ion-list *ngIf="model">
+    <ion-card>
+      <ion-fab center middle *ngIf="model && !model.photo">
+        <button ion-fab (click)="takePicture()">
+          <ion-icon name="camera"></ion-icon>
+        </button>
+      </ion-fab>
+
+      <ion-item>
+        <img [src]="DomSanitizer.bypassSecurityTrustUrl(model.photo)" *ngIf="model && model.photo">
+        <img src="assets/imgs/default_picture.jpeg" *ngIf="model && !model.photo">
+      </ion-item>
+      
+      <ion-item>
+        <ion-label floating>Descrição</ion-label>
+        <ion-input type="text" name="description" [(ngModel)]="model.description"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <p>Lat/Long( <span [innerHTML]="currentLat"></span>, <span [innerHTML]="currentLng"></span> )</p>
+
+        <button ion-button icon-left clear item-end (click)="save()">
+          <ion-icon name="done-all"></ion-icon> Salvar
+        </button>
+      </ion-item>
+      
+    </ion-card>
+  </ion-list>
+
+  <ion-list>
+    <ion-card *ngFor="let item of locations">
+      <ion-item>
+        <div *ngIf="item.location.photo">
+          <img [src]="DomSanitizer.bypassSecurityTrustUrl(item.location.photo)" *ngIf="item.location.photo">
+        </div>
+      </ion-item>
+
+      <ion-item>
+        <p>Criação: {{ item.location.timeref | date:'dd/MM/yyyy' }}</p>
+
+        <p>Descrição: {{ item.location.description }}</p>
+      </ion-item>
+      <ion-item>
+        <p>Lat/Long( {{ item.location.lat }} , {{ item.location.lng }} )</p>
+
+        <button ion-button icon-left clear item-end (click)="removeLocation(item)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+        <button ion-button icon-left clear item-end (click)="sendDataToServer(item)">
+          <ion-icon name="cloud-upload"></ion-icon>
+        </button>
+      </ion-item>
+      
+    </ion-card>
+  </ion-list>
 
 </ion-content>

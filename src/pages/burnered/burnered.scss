@@ -4,7 +4,7 @@ page-burnered {
     }
 
     ion-fab {
-        bottom: -25px !important;
+        bottom: -35px !important;
     }
     button {
         background-color: transparent;
@@ -21,14 +21,23 @@ page-burnered {
         color: #383737;
         font-size: medium;
     }
+    ion-col.text2.col{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    ion-col.text1.col{
+        padding-top: 10px;
+    }
 
     .text1{
         text-align: justify;
     }
 
-    .textred {
+    .textred, .label-md .textred{
         color: red;
         font-size: large;
+        line-height: 1.3;
+        margin: 0%;
     }
 
     .burnedtext{
@@ -37,23 +46,23 @@ page-burnered {
         color: #FFFFFF;
     }
 
-    .space{
-        height: 20%;
-    }
-
-    .eufiscal{
+    [text-wrap] .label-md{
         color: #ed8f03;
         font-size: x-large;
         text-align: center;
-        margin-left: 35%;
-        margin-right: 35%;
         font-weight: bold;
+    }
+    [text-wrap] ion-label{
+        white-space: nowrap;
+    }
+    [col-6] .item-md.item-block .item-inner{
+        border: none;
     }
 
     .eufiscalborder {
         border-bottom: solid #ed8f03 2px;
-        margin-left: 10%;
-        margin-right: 10%;
+        margin-left: 30%;
+        margin-right: 30%;
     }
     .burnedborder {
         border-bottom: solid #FFFFFF 2px;
