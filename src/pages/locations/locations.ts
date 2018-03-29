@@ -84,7 +84,8 @@ export class LocationsPage {
     this.camera.getPicture(this.options).then((imageData) => {
       // imageData is either a base64 encoded string or a file URI
       // If it's base64:
-      this.model.photo = 'data:image/jpeg;base64,' + imageData;
+      //this.model.photo = 'data:image/jpeg;base64,' + imageData;
+      this.model.photo = imageData;
      }).catch((error) => {
       console.log('Error on taking photo', error);
       let alert = this.alertCtrl.create({

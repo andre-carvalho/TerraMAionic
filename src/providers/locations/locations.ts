@@ -1,8 +1,7 @@
-// import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
-import { Http } from '@angular/http';
+import { HttpClient,HttpHeaders } from '@angular/common/http';
 
 
 /*
@@ -14,9 +13,9 @@ import { Http } from '@angular/http';
 @Injectable()
 export class LocationsProvider {
 
-  private API_URL = 'http://127.0.0.1:5000/'
+  private API_URL = 'http://127.0.0.1:5000';
 
-  constructor(private storage: Storage, private datepipe: DatePipe, public http: Http) { //, public http: HttpClient
+  constructor(private storage: Storage, private datepipe: DatePipe, public http: HttpClient) {
     console.log('Hello LocationsProvider Provider');
   }
 
@@ -64,25 +63,38 @@ export class LocationsProvider {
   }
 
   private postDataToServer(location: any) {
-    return new Promise((resolve, reject) => {
-      let url = this.API_URL + 'locations';
 
-      this.http.post(url, 
-        {'description':location.description,
-        'lat':location.lat,
-        'lng':location.lng,
-        'datetime':location.timeref,
-        'photo':location.photo
-        })
-        .subscribe((result: any) => {
-          resolve(result.json());
-        },
-        (error) => {
-          reject(error.json());
+    // let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    headers.append('Access-Control-Allow-Origin' , '*');
+    headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+    headers.append('Accept','application/json');
+
+    let url = this.API_URL + '/locations';
+    //let data = 'description='+location.description+'&lat='+location.lat+'&lng='+location.lng+'&datetime='+location.timeref.toISOString()+'&photo='+location.photo;
+    let data = {
+      'description':location.description,
+      'lat':location.lat,
+      'lng':location.lng,
+      'datetime':location.timeref.toISOString(),
+      'photo':location.photo
+    }
+
+    return new Promise((resolve, reject) => {
+      this.http.post(url, data, { headers:headers })
+        .subscribe(res => {
+          resolve(res);
+        }, (err) => {
+          reject(err);
         });
     });
+
   }
 }
+
+
+
+
 
 export class Location {
   lat: number;

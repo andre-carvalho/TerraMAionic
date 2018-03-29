@@ -66,7 +66,7 @@ var BurneredPage = /** @class */ (function () {
     };
     BurneredPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-burnered',template:/*ion-inline-start:"/home/andre/Projects/IonicAppTheming/src/pages/burnered/burnered.html"*/'<!--\n  Generated template for the BurneredPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Queimadas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-grid>\n      <ion-row>\n        <ion-col col-3></ion-col>\n        <ion-col col-6>\n          <ion-item text-wrap>\n            Eu Fiscal\n            <div class="eufiscalborder"></div>\n          </ion-item>\n        </ion-col>\n        <ion-col col-3></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-12 class="burnedtext">\n          QUEIMADAS\n          <div class="burnedborder"></div>\n        </ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-1></ion-col>\n        <ion-col col-10 class="text1">\n            Queimada é uma prática primitiva da agricultura, destinada principalmente à limpeza do terreno para o cultivo de plantações ou formação de pastos, com uso do fogo de forma controlada que às vezes pode descontrolar-se e causar incêndios em florestas, matas e terrenos grandes.\n        </ion-col>\n        <ion-col col-1></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-1></ion-col>\n        <ion-col col-10 class="text2">\n          Agora você pode nos ajudar a fiscalizar as queimadas.\n        </ion-col>\n        <ion-col col-1></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-12>\n          <ion-label class="textred">Viu alguma queimada?</ion-label>\n          <ion-label class="textred">Denuncie!</ion-label>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n\n    <ion-fab bottom center>\n      <button ion-fab (click)="goToCamera()">\n        <ion-icon name="camera"></ion-icon>\n      </button>\n    </ion-fab>\n\n  </ion-content>\n  <ion-footer>\n    <ion-toolbar>\n      <ion-grid>\n        <ion-row>\n          <ion-col col-1></ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToInfo()">\n              <ion-icon name="information-circle"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToMap()">\n              <ion-icon name="pin"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-2>\n          </ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToEdit()">\n              <ion-icon name="list-box"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToEdit()">\n              <ion-icon name="cloud-upload"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-1></ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-toolbar>\n  </ion-footer>'/*ion-inline-end:"/home/andre/Projects/IonicAppTheming/src/pages/burnered/burnered.html"*/,
+            selector: 'page-burnered',template:/*ion-inline-start:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/burnered/burnered.html"*/'<!--\n  Generated template for the BurneredPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Queimadas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-grid>\n      <ion-row>\n        <ion-col col-3></ion-col>\n        <ion-col col-6>\n          <ion-item text-wrap>\n            Eu Fiscal\n            <div class="eufiscalborder"></div>\n          </ion-item>\n        </ion-col>\n        <ion-col col-3></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-12 class="burnedtext">\n          QUEIMADAS\n          <div class="burnedborder"></div>\n        </ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-1></ion-col>\n        <ion-col col-10 class="text1">\n            Queimada é uma prática primitiva da agricultura, destinada principalmente à limpeza do terreno para o cultivo de plantações ou formação de pastos, com uso do fogo de forma controlada que às vezes pode descontrolar-se e causar incêndios em florestas, matas e terrenos grandes.\n        </ion-col>\n        <ion-col col-1></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-1></ion-col>\n        <ion-col col-10 class="text2">\n          Agora você pode nos ajudar a fiscalizar as queimadas.\n        </ion-col>\n        <ion-col col-1></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-12>\n          <ion-label class="textred">Viu alguma queimada?</ion-label>\n          <ion-label class="textred">Denuncie!</ion-label>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n\n    <ion-fab bottom center>\n      <button ion-fab (click)="goToCamera()">\n        <ion-icon name="camera"></ion-icon>\n      </button>\n    </ion-fab>\n\n  </ion-content>\n  <ion-footer>\n    <ion-toolbar>\n      <ion-grid>\n        <ion-row>\n          <ion-col col-1></ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToInfo()">\n              <ion-icon name="information-circle"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToMap()">\n              <ion-icon name="pin"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-2>\n          </ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToEdit()">\n              <ion-icon name="list-box"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToEdit()">\n              <ion-icon name="cloud-upload"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-1></ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-toolbar>\n  </ion-footer>'/*ion-inline-end:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/burnered/burnered.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], BurneredPage);
@@ -230,7 +230,7 @@ var MapPage = /** @class */ (function () {
     };
     MapPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-map',template:/*ion-inline-start:"/home/andre/Projects/IonicAppTheming/src/pages/map/map.html"*/'<ion-header>\n  <ion-navbar>      \n    <ion-buttons end>\n      <button ion-button icon-only (click)="goToLocations()">\n          <ion-icon name="camera"></ion-icon>\n      </button>\n      <button ion-button icon-only [ngStyle]="{\'background-color\': btColor }" (click)="startWatchingLocation()">\n          <ion-icon name="locate"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>Mapa</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-fab bottom right>\n    <button ion-fab mini><ion-icon name="pin"></ion-icon></button>\n    <ion-fab-list side="left">\n      <button ion-fab mini (click)="addLocation()"><ion-icon name="add-circle"></ion-icon></button>\n      <button ion-fab mini (click)="removeLastLocation()"><ion-icon name="remove-circle"></ion-icon></button>\n    </ion-fab-list>\n  </ion-fab>\n  \n  <div id="map_canvas"></div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/andre/Projects/IonicAppTheming/src/pages/map/map.html"*/
+            selector: 'page-map',template:/*ion-inline-start:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/map/map.html"*/'<ion-header>\n  <ion-navbar>      \n    <ion-buttons end>\n      <button ion-button icon-only (click)="goToLocations()">\n          <ion-icon name="camera"></ion-icon>\n      </button>\n      <button ion-button icon-only [ngStyle]="{\'background-color\': btColor }" (click)="startWatchingLocation()">\n          <ion-icon name="locate"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>Mapa</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-fab bottom right>\n    <button ion-fab mini><ion-icon name="pin"></ion-icon></button>\n    <ion-fab-list side="left">\n      <button ion-fab mini (click)="addLocation()"><ion-icon name="add-circle"></ion-icon></button>\n      <button ion-fab mini (click)="removeLastLocation()"><ion-icon name="remove-circle"></ion-icon></button>\n    </ion-fab-list>\n  </ion-fab>\n  \n  <div id="map_canvas"></div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/map/map.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */]])
@@ -242,7 +242,7 @@ var MapPage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 113:
+/***/ 115:
 /***/ (function(module, exports) {
 
 function webpackEmptyAsyncContext(req) {
@@ -255,20 +255,20 @@ function webpackEmptyAsyncContext(req) {
 webpackEmptyAsyncContext.keys = function() { return []; };
 webpackEmptyAsyncContext.resolve = webpackEmptyAsyncContext;
 module.exports = webpackEmptyAsyncContext;
-webpackEmptyAsyncContext.id = 113;
+webpackEmptyAsyncContext.id = 115;
 
 /***/ }),
 
-/***/ 154:
+/***/ 157:
 /***/ (function(module, exports, __webpack_require__) {
 
 var map = {
 	"../pages/burnered/burnered.module": [
-		280,
+		285,
 		1
 	],
 	"../pages/locations/locations.module": [
-		281,
+		286,
 		0
 	]
 };
@@ -283,12 +283,12 @@ function webpackAsyncContext(req) {
 webpackAsyncContext.keys = function webpackAsyncContextKeys() {
 	return Object.keys(map);
 };
-webpackAsyncContext.id = 154;
+webpackAsyncContext.id = 157;
 module.exports = webpackAsyncContext;
 
 /***/ }),
 
-/***/ 157:
+/***/ 160:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -296,9 +296,9 @@ module.exports = webpackAsyncContext;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return Location; });
 /* unused harmony export LocationList */
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__ionic_storage__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_common_http__ = __webpack_require__(162);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -308,7 +308,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-// import { HttpClient } from '@angular/common/http';
 
 
 
@@ -324,7 +323,7 @@ var LocationsProvider = /** @class */ (function () {
         this.storage = storage;
         this.datepipe = datepipe;
         this.http = http;
-        this.API_URL = 'http://127.0.0.1:5000/';
+        this.API_URL = 'http://127.0.0.1:5000';
         console.log('Hello LocationsProvider Provider');
     }
     LocationsProvider.prototype.insert = function (location) {
@@ -364,24 +363,32 @@ var LocationsProvider = /** @class */ (function () {
     };
     LocationsProvider.prototype.postDataToServer = function (location) {
         var _this = this;
+        // let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
+        var headers = new __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["c" /* HttpHeaders */]().set('Content-Type', 'application/json');
+        headers.append('Access-Control-Allow-Origin', '*');
+        headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
+        headers.append('Accept', 'application/json');
+        var url = this.API_URL + '/locations';
+        //let data = 'description='+location.description+'&lat='+location.lat+'&lng='+location.lng+'&datetime='+location.timeref.toISOString()+'&photo='+location.photo;
+        var data = {
+            'description': location.description,
+            'lat': location.lat,
+            'lng': location.lng,
+            'datetime': location.timeref.toISOString(),
+            'photo': location.photo
+        };
         return new Promise(function (resolve, reject) {
-            var url = _this.API_URL + 'locations';
-            _this.http.post(url, { 'description': location.description,
-                'lat': location.lat,
-                'lng': location.lng,
-                'datetime': location.timeref,
-                'photo': location.photo
-            })
-                .subscribe(function (result) {
-                resolve(result.json());
-            }, function (error) {
-                reject(error.json());
+            _this.http.post(url, data, { headers: headers })
+                .subscribe(function (res) {
+                resolve(res);
+            }, function (err) {
+                reject(err);
             });
         });
     };
     LocationsProvider = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["A" /* Injectable */])(),
-        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_2__angular_common__["d" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_3__angular_http__["a" /* Http */]])
+        __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1__ionic_storage__["b" /* Storage */], __WEBPACK_IMPORTED_MODULE_2__angular_common__["d" /* DatePipe */], __WEBPACK_IMPORTED_MODULE_3__angular_common_http__["a" /* HttpClient */]])
     ], LocationsProvider);
     return LocationsProvider;
 }());
@@ -402,7 +409,7 @@ var LocationList = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 201:
+/***/ 204:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -431,7 +438,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/andre/Projects/IonicAppTheming/src/pages/home/home.html"*/'<ion-header no-border>\n  <ion-navbar transparent>\n    <ion-title>\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col col-3></ion-col>\n      <ion-col col-6>\n        <ion-item text-wrap>\n          Eu Fiscal\n          <div class="eufiscalborder"></div>\n        </ion-item>\n      </ion-col>\n      <ion-col col-3></ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-12 class="text1">\n        Insira seus dados para login\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-2></ion-col>\n      <ion-col col-8>\n        <ion-item>\n          <ion-label floating>Usuário</ion-label>\n          <ion-input type="text" value=""></ion-input>\n        </ion-item>\n      \n        <ion-item>\n          <ion-label floating>Senha</ion-label>\n          <ion-input type="password"></ion-input>\n        </ion-item>\n      </ion-col>\n      <ion-col col-2></ion-col>\n    </ion-row>\n   \n    <ion-row>\n      <ion-col col-2></ion-col>\n      <ion-col col-8 class="text2">\n        <div class="forgotpass">Esqueci minha senha\n        </div>\n      </ion-col>\n      <ion-col col-2></ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-12 style="text-align:center;">\n        <button ion-button icon-end round (click)="goToBurnered()">\n          Login<ion-icon name="person"></ion-icon>\n        </button>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-12>\n        <ion-label class="text3">Ainda não é cadastrado?</ion-label>\n        <ion-label class="text4">Cadastre-se agora</ion-label>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/home/andre/Projects/IonicAppTheming/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/home/home.html"*/'<ion-header no-border>\n  <ion-navbar transparent>\n    <ion-title>\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col col-3></ion-col>\n      <ion-col col-6>\n        <ion-item text-wrap>\n          Eu Fiscal\n          <div class="eufiscalborder"></div>\n        </ion-item>\n      </ion-col>\n      <ion-col col-3></ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-12 class="text1">\n        Insira seus dados para login\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-2></ion-col>\n      <ion-col col-8>\n        <ion-item>\n          <ion-label floating>Usuário</ion-label>\n          <ion-input type="text" value=""></ion-input>\n        </ion-item>\n      \n        <ion-item>\n          <ion-label floating>Senha</ion-label>\n          <ion-input type="password"></ion-input>\n        </ion-item>\n      </ion-col>\n      <ion-col col-2></ion-col>\n    </ion-row>\n   \n    <ion-row>\n      <ion-col col-2></ion-col>\n      <ion-col col-8 class="text2">\n        <div class="forgotpass">Esqueci minha senha\n        </div>\n      </ion-col>\n      <ion-col col-2></ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-12 style="text-align:center;">\n        <button ion-button icon-end round (click)="goToBurnered()">\n          Login<ion-icon name="person"></ion-icon>\n        </button>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-12>\n        <ion-label class="text3">Ainda não é cadastrado?</ion-label>\n        <ion-label class="text4">Cadastre-se agora</ion-label>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */]])
     ], HomePage);
@@ -442,13 +449,13 @@ var HomePage = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 202:
+/***/ 205:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(203);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(225);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__ = __webpack_require__(206);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__app_module__ = __webpack_require__(226);
 
 
 Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* platformBrowserDynamic */])().bootstrapModule(__WEBPACK_IMPORTED_MODULE_1__app_module__["a" /* AppModule */]);
@@ -456,27 +463,27 @@ Object(__WEBPACK_IMPORTED_MODULE_0__angular_platform_browser_dynamic__["a" /* pl
 
 /***/ }),
 
-/***/ 225:
+/***/ 226:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppModule; });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_platform_browser__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(200);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_status_bar__ = __webpack_require__(203);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__ionic_native_geolocation__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(158);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common__ = __webpack_require__(32);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_http__ = __webpack_require__(159);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__(279);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_home_home__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__ionic_native_camera__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__ionic_storage__ = __webpack_require__(161);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__angular_common__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__angular_common_http__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__app_component__ = __webpack_require__(284);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__pages_home_home__ = __webpack_require__(204);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__pages_burnered_burnered__ = __webpack_require__(103);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__pages_map_map__ = __webpack_require__(104);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__pages_locations_locations__ = __webpack_require__(51);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_locations_locations__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__providers_locations_locations__ = __webpack_require__(160);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -523,7 +530,7 @@ var AppModule = /** @class */ (function () {
                     name: '__terramadb',
                     driverOrder: ['indexeddb', 'sqlite', 'websql']
                 }),
-                __WEBPACK_IMPORTED_MODULE_9__angular_http__["b" /* HttpModule */]
+                __WEBPACK_IMPORTED_MODULE_9__angular_common_http__["b" /* HttpClientModule */]
             ],
             bootstrap: [__WEBPACK_IMPORTED_MODULE_2_ionic_angular__["b" /* IonicApp */]],
             entryComponents: [
@@ -552,16 +559,16 @@ var AppModule = /** @class */ (function () {
 
 /***/ }),
 
-/***/ 279:
+/***/ 284:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return MyApp; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(200);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(199);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(201);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__ = __webpack_require__(203);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__ = __webpack_require__(202);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__pages_home_home__ = __webpack_require__(204);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -587,7 +594,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/andre/Projects/IonicAppTheming/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/andre/Projects/IonicAppTheming/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["h" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);
@@ -605,10 +612,10 @@ var MyApp = /** @class */ (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LocationsPage; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_ionic_angular__ = __webpack_require__(18);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(156);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(21);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__ = __webpack_require__(159);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__ = __webpack_require__(28);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__ionic_native_geolocation__ = __webpack_require__(80);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_locations_locations__ = __webpack_require__(157);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__providers_locations_locations__ = __webpack_require__(160);
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -691,7 +698,8 @@ var LocationsPage = /** @class */ (function () {
         this.camera.getPicture(this.options).then(function (imageData) {
             // imageData is either a base64 encoded string or a file URI
             // If it's base64:
-            _this.model.photo = 'data:image/jpeg;base64,' + imageData;
+            //this.model.photo = 'data:image/jpeg;base64,' + imageData;
+            _this.model.photo = imageData;
         }).catch(function (error) {
             console.log('Error on taking photo', error);
             var alert = _this.alertCtrl.create({
@@ -752,7 +760,7 @@ var LocationsPage = /** @class */ (function () {
     };
     LocationsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-locations',template:/*ion-inline-start:"/home/andre/Projects/IonicAppTheming/src/pages/locations/locations.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons end>\n      <!--button ion-button (click)="removePicture()">\n        <ion-icon name="trash"></ion-icon>\n      </button>\n      <button ion-button (click)="takePicture()">\n        <ion-icon name="camera"></ion-icon>\n      </button-->\n      <button ion-button (click)="sendDataToServer()">\n        <ion-icon name="cloud-upload"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>Lista de lugares</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list *ngIf="model">\n    <ion-card>\n\n      <ion-item>\n        <!--\n        <ion-thumbnail item-start>\n          <img [src]="DomSanitizer.bypassSecurityTrustUrl(model.photo)" *ngIf="model && model.photo">\n          <img src="assets/imgs/default_picture.jpeg" *ngIf="model && !model.photo">\n        </ion-thumbnail>\n        -->\n        <img [src]="DomSanitizer.bypassSecurityTrustUrl(model.photo)" *ngIf="model && model.photo">\n        \n        <button ion-button block icon-right color="default" (click)="takePicture()" *ngIf="model && !model.photo">\n          Capturar uma foto\n          <ion-icon name="camera"></ion-icon>\n        </button>\n      </ion-item>\n      \n      <ion-item>\n        <ion-label floating>Descrição</ion-label>\n        <ion-input type="text" name="description" [(ngModel)]="model.description"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <p>Lat/Long( <span [innerHTML]="currentLat"></span>, <span [innerHTML]="currentLng"></span> )</p>\n\n        <button ion-button icon-left clear item-end (click)="save()">\n          <ion-icon name="done-all"></ion-icon> Salvar\n        </button>\n      </ion-item>\n      \n    </ion-card>\n  </ion-list>\n\n  <ion-list>\n    <ion-card *ngFor="let item of locations">\n      <ion-item>\n        <ion-thumbnail item-start>\n          <img [src]="DomSanitizer.bypassSecurityTrustUrl(item.location.photo)" *ngIf="item.location.photo">\n        </ion-thumbnail>\n        <p>Criação: {{ item.location.timeref | date:\'dd/MM/yyyy\' }}</p>\n\n        <p>Descrição: {{ item.location.description }}</p>\n      </ion-item>\n      <ion-item>\n        <p>Lat/Long( {{ item.location.lat }} , {{ item.location.lng }} )</p>\n\n        <button ion-button icon-left clear item-end (click)="removeLocation(item)">\n          <ion-icon name="trash"></ion-icon>\n        </button>\n        <button ion-button icon-left clear item-end (click)="sendDataToServer(item)">\n          <ion-icon name="cloud-upload"></ion-icon>\n        </button>\n      </ion-item>\n      \n    </ion-card>\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"/home/andre/Projects/IonicAppTheming/src/pages/locations/locations.html"*/,
+            selector: 'page-locations',template:/*ion-inline-start:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/locations/locations.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons end>\n      <!--button ion-button (click)="removePicture()">\n        <ion-icon name="trash"></ion-icon>\n      </button>\n      <button ion-button (click)="takePicture()">\n        <ion-icon name="camera"></ion-icon>\n      </button-->\n      <button ion-button (click)="sendDataToServer()">\n        <ion-icon name="cloud-upload"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>Lista de lugares</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list *ngIf="model">\n    <ion-card>\n\n      <ion-item>\n        <!--\n        <ion-thumbnail item-start>\n          <img [src]="DomSanitizer.bypassSecurityTrustUrl(model.photo)" *ngIf="model && model.photo">\n          <img src="assets/imgs/default_picture.jpeg" *ngIf="model && !model.photo">\n        </ion-thumbnail>\n        -->\n        <img [src]="DomSanitizer.bypassSecurityTrustUrl(model.photo)" *ngIf="model && model.photo">\n        \n        <button ion-button block icon-right color="default" (click)="takePicture()" *ngIf="model && !model.photo">\n          Capturar uma foto\n          <ion-icon name="camera"></ion-icon>\n        </button>\n      </ion-item>\n      \n      <ion-item>\n        <ion-label floating>Descrição</ion-label>\n        <ion-input type="text" name="description" [(ngModel)]="model.description"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <p>Lat/Long( <span [innerHTML]="currentLat"></span>, <span [innerHTML]="currentLng"></span> )</p>\n\n        <button ion-button icon-left clear item-end (click)="save()">\n          <ion-icon name="done-all"></ion-icon> Salvar\n        </button>\n      </ion-item>\n      \n    </ion-card>\n  </ion-list>\n\n  <ion-list>\n    <ion-card *ngFor="let item of locations">\n      <ion-item>\n        <ion-thumbnail item-start>\n          <img [src]="DomSanitizer.bypassSecurityTrustUrl(item.location.photo)" *ngIf="item.location.photo">\n        </ion-thumbnail>\n        <p>Criação: {{ item.location.timeref | date:\'dd/MM/yyyy\' }}</p>\n\n        <p>Descrição: {{ item.location.description }}</p>\n      </ion-item>\n      <ion-item>\n        <p>Lat/Long( {{ item.location.lat }} , {{ item.location.lng }} )</p>\n\n        <button ion-button icon-left clear item-end (click)="removeLocation(item)">\n          <ion-icon name="trash"></ion-icon>\n        </button>\n        <button ion-button icon-left clear item-end (click)="sendDataToServer(item)">\n          <ion-icon name="cloud-upload"></ion-icon>\n        </button>\n      </ion-item>\n      \n    </ion-card>\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/locations/locations.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* NavParams */], __WEBPACK_IMPORTED_MODULE_4__ionic_native_geolocation__["a" /* Geolocation */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_3__angular_platform_browser__["c" /* DomSanitizer */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
@@ -765,5 +773,5 @@ var LocationsPage = /** @class */ (function () {
 
 /***/ })
 
-},[202]);
+},[205]);
 //# sourceMappingURL=main.js.map
