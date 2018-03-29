@@ -1,6 +1,12 @@
 # TerraMAionic
 An exercise using ionic 3
 
+# Install Ionic
+
+I used the official instructions to install Ionic in my environment: https://ionicframework.com/docs/intro/installation/
+
+We should to have npm nodejs to start!
+
 # The develop project
 
 I used the official instructions to start the project: https://ionicframework.com/docs/intro/tutorial/
