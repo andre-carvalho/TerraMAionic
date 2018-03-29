@@ -7,6 +7,7 @@ import { Geolocation } from '@ionic-native/geolocation';
 import { Camera } from '@ionic-native/camera';
 import { IonicStorageModule } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
+import { HttpModule } from '@angular/http';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -29,7 +30,8 @@ import { LocationsProvider } from '../providers/locations/locations';
     IonicStorageModule.forRoot({
       name: '__terramadb',
          driverOrder: ['indexeddb', 'sqlite', 'websql']
-    })
+    }),
+    HttpModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [
