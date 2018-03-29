@@ -1,17 +1,30 @@
 # TerraMAionic
 An exercise using ionic 3
 
+# Install Ionic
+
+I used the official instructions to install Ionic in my environment: https://ionicframework.com/docs/intro/installation/
+
+We should to have npm nodejs to start!
+
 # The develop project
 
 I used the official instructions to start the project: https://ionicframework.com/docs/intro/tutorial/
 
 ## Create base project
 
-Adding the android platform:
+Create a blank project:
+```
+$ ionic start TerraMAionic blank
+```
+
+Adding the android* platform:
 
 ```
 $ ionic cordova platform add android
 ```
+
+*Here is mandatory that you have in your environment the Android SDK and set the ANDROID_HOME environment variable if you want run this project in android device.
 
 ## install cordova dependencies
 
