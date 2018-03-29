@@ -18,15 +18,20 @@
 <ion-content padding>
   <ion-list *ngIf="model">
     <ion-card>
-      <ion-fab center middle *ngIf="model && !model.photo">
-        <button ion-fab (click)="takePicture()">
-          <ion-icon name="camera"></ion-icon>
-        </button>
-      </ion-fab>
 
       <ion-item>
+        <!--
+        <ion-thumbnail item-start>
+          <img [src]="DomSanitizer.bypassSecurityTrustUrl(model.photo)" *ngIf="model && model.photo">
+          <img src="assets/imgs/default_picture.jpeg" *ngIf="model && !model.photo">
+        </ion-thumbnail>
+        -->
         <img [src]="DomSanitizer.bypassSecurityTrustUrl(model.photo)" *ngIf="model && model.photo">
-        <img src="assets/imgs/default_picture.jpeg" *ngIf="model && !model.photo">
+        
+        <button ion-button block icon-right color="default" (click)="takePicture()" *ngIf="model && !model.photo">
+          Capturar uma foto
+          <ion-icon name="camera"></ion-icon>
+        </button>
       </ion-item>
       
       <ion-item>
@@ -48,12 +53,9 @@
   <ion-list>
     <ion-card *ngFor="let item of locations">
       <ion-item>
-        <div *ngIf="item.location.photo">
+        <ion-thumbnail item-start>
           <img [src]="DomSanitizer.bypassSecurityTrustUrl(item.location.photo)" *ngIf="item.location.photo">
-        </div>
-      </ion-item>
-
-      <ion-item>
+        </ion-thumbnail>
         <p>Criação: {{ item.location.timeref | date:'dd/MM/yyyy' }}</p>
 
         <p>Descrição: {{ item.location.description }}</p>

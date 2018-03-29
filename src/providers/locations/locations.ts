@@ -2,6 +2,8 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
+import { Http } from '@angular/http';
+
 
 /*
   Generated class for the LocationsProvider provider.
@@ -12,7 +14,9 @@ import { DatePipe } from '@angular/common';
 @Injectable()
 export class LocationsProvider {
 
-  constructor(private storage: Storage, private datepipe: DatePipe) { //, public http: HttpClient
+  private API_URL = 'http://127.0.0.1:5000/'
+
+  constructor(private storage: Storage, private datepipe: DatePipe, public http: Http) { //, public http: HttpClient
     console.log('Hello LocationsProvider Provider');
   }
 
@@ -53,6 +57,30 @@ export class LocationsProvider {
       .catch((error) => {
         return Promise.reject(error);
       });
+  }
+
+  public sendToServer(location: Location) {
+    return this.postDataToServer(location);
+  }
+
+  private postDataToServer(location: any) {
+    return new Promise((resolve, reject) => {
+      let url = this.API_URL + 'locations';
+
+      this.http.post(url, 
+        {'description':location.description,
+        'lat':location.lat,
+        'lng':location.lng,
+        'datetime':location.timeref,
+        'photo':location.photo
+        })
+        .subscribe((result: any) => {
+          resolve(result.json());
+        },
+        (error) => {
+          reject(error.json());
+        });
+    });
   }
 }
 

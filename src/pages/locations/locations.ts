@@ -21,7 +21,7 @@ export class LocationsPage {
   public currentLng: any;
   public startCamera: any;
   options: CameraOptions = {
-    quality: 50,
+    quality: 30,
     destinationType: this.camera.DestinationType.DATA_URL,
     encodingType: this.camera.EncodingType.JPEG,
     mediaType: this.camera.MediaType.PICTURE,
@@ -117,7 +117,7 @@ export class LocationsPage {
     });
   }
 
-  save() {
+  public save() {
     this.saveLocation()
       .then(() => {
         this.toast.create({ message: 'Local salvo.', duration: 1500, position: 'botton' }).present();
@@ -137,8 +137,14 @@ export class LocationsPage {
     }
   }
 
-  sendDataToServer(item: LocationList) {
-
+  public sendDataToServer(item: LocationList) {
+    
+    this.locationsProvider.sendToServer(item.location)
+      .then(() => {
+        this.toast.create({ message: 'Upload com sucesso.', duration: 1500, position: 'botton' }).present();
+      })
+      .catch(() => {
+        this.toast.create({ message: 'Erro ao enviar dados.', duration: 1500, position: 'botton' }).present();
+      });
   }
-
 }
