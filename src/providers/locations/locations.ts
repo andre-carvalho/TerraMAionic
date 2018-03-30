@@ -13,7 +13,7 @@ import { HttpClient,HttpHeaders } from '@angular/common/http';
 @Injectable()
 export class LocationsProvider {
 
-  private API_URL = 'http://127.0.0.1:5000';
+  private API_URL = 'http://192.168.1.11:5000';
 
   constructor(private storage: Storage, private datepipe: DatePipe, public http: HttpClient) {
     console.log('Hello LocationsProvider Provider');
@@ -64,14 +64,13 @@ export class LocationsProvider {
 
   private postDataToServer(location: any) {
 
-    // let headers = new HttpHeaders().set('Content-Type', 'application/x-www-form-urlencoded');
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     headers.append('Access-Control-Allow-Origin' , '*');
     headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
     headers.append('Accept','application/json');
 
     let url = this.API_URL + '/locations';
-    //let data = 'description='+location.description+'&lat='+location.lat+'&lng='+location.lng+'&datetime='+location.timeref.toISOString()+'&photo='+location.photo;
+    
     let data = {
       'description':location.description,
       'lat':location.lat,

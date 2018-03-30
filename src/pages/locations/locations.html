@@ -26,7 +26,7 @@
           <img src="assets/imgs/default_picture.jpeg" *ngIf="model && !model.photo">
         </ion-thumbnail>
         -->
-        <img [src]="DomSanitizer.bypassSecurityTrustUrl(model.photo)" *ngIf="model && model.photo">
+        <img [src]="DomSanitizer.bypassSecurityTrustUrl('data:image/png;base64,'+model.photo)" *ngIf="model && model.photo">
         
         <button ion-button block icon-right color="default" (click)="takePicture()" *ngIf="model && !model.photo">
           Capturar uma foto
@@ -54,7 +54,7 @@
     <ion-card *ngFor="let item of locations">
       <ion-item>
         <ion-thumbnail item-start>
-          <img [src]="DomSanitizer.bypassSecurityTrustUrl(item.location.photo)" *ngIf="item.location.photo">
+          <img [src]="DomSanitizer.bypassSecurityTrustUrl('data:image/png;base64,'+item.location.photo)" *ngIf="item.location.photo">
         </ion-thumbnail>
         <p>Criação: {{ item.location.timeref | date:'dd/MM/yyyy' }}</p>
 
