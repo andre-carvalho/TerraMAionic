@@ -60,7 +60,8 @@ export class LocationsPage {
     this.locationsProvider.getAll()
       .then((result) => {
         this.locations = result;
-        this.createNewLocation()
+        this.locations.reverse();
+        this.createNewLocation();
       });
   }
 

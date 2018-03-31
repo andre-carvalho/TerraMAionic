@@ -42,16 +42,16 @@ export class LocationsProvider {
 
   public getAll() {
 
-    let contacts: LocationList[] = [];
+    let locations: LocationList[] = [];
 
     return this.storage.forEach((value: Location, key: string, iterationNumber: Number) => {
       let location = new LocationList();
       location.key = key;
       location.location = value;
-      contacts.push(location);
+      locations.push(location);
     })
       .then(() => {
-        return Promise.resolve(contacts);
+        return Promise.resolve(locations);
       })
       .catch((error) => {
         return Promise.reject(error);
