@@ -1,6 +1,8 @@
 # TerraMAionic
 An exercise using ionic 3
 
+https://andre-carvalho.github.io/TerraMAionic/
+
 # Install Ionic
 
 I used the official instructions to install Ionic in my environment: https://ionicframework.com/docs/intro/installation/
