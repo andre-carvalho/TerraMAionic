@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
-import { DomSanitizer } from '@angular/platform-browser';
-import { AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocationsProvider, Location, LocationList } from '../../providers/locations/locations';
 
@@ -16,22 +14,25 @@ export class LocationsPage {
   locations: LocationList[];
   model: Location;
   key: string;
-  public base64Image: string;
   public currentLat: any;
   public currentLng: any;
   public startCamera: any;
   options: CameraOptions = {
     quality: 30,
-    destinationType: this.camera.DestinationType.DATA_URL,
-    encodingType: this.camera.EncodingType.JPEG,
+    destinationType: this.camera.DestinationType.FILE_URI,
+    sourceType: this.camera.PictureSourceType.CAMERA, //Source is camera
+    allowEdit: false, // Allow user to edit before saving
     mediaType: this.camera.MediaType.PICTURE,
-    correctOrientation: true,
-    cameraDirection: 1 
+    encodingType: this.camera.EncodingType.JPEG, // Save as JPEG
+    targetWidth: 300,
+    targetHeight: 300,
+    saveToPhotoAlbum: true, // Album save opton
+    correctOrientation: true // Camera orientation  
   }
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public geolocation: Geolocation,
-    private camera: Camera,  private DomSanitizer: DomSanitizer, private alertCtrl: AlertController,
-    private locationsProvider: LocationsProvider, private toast: ToastController) {
+    private camera: Camera, private locationsProvider: LocationsProvider,
+    private toast: ToastController) {
       this.currentLat = this.navParams.get('currentLat');
       this.currentLng = this.navParams.get('currentLng');
       this.startCamera = this.navParams.get('startCamera');
@@ -90,13 +91,16 @@ export class LocationsPage {
       this.model.photo = imageData;
      }).catch((error) => {
       console.log('Error on taking photo', error);
-      let alert = this.alertCtrl.create({
-        title: 'Falha Camera',
-        subTitle: 'Falhou ao acionar a camera de seu dispositivo. Erro informado: '+error.message,
-        buttons: ['ok']
-      });
-      alert.present();
+      this.toast.create({ message: 'Falhou ao acionar a camera de seu dispositivo.', duration: 1500, position: 'botton' }).present();
      });
+  }
+
+  prepareHeader(img) {
+    if(img.startsWith('file')) {
+      return img;
+    }else{
+      return 'data:image/png;base64,'+img;
+    }
   }
 
   catchLocation() {
@@ -111,12 +115,7 @@ export class LocationsPage {
 
     }).catch((error) => {
       console.log('Error getting location', error);
-      let alert = this.alertCtrl.create({
-        title: 'Falha GPS',
-        subTitle: 'Falhou ao capturar sua localização. Erro informado: '+error.message,
-        buttons: ['ok']
-      });
-      alert.present();
+      this.toast.create({ message: 'Falhou ao capturar sua localização.', duration: 1500, position: 'botton' }).present();
     });
   }
 
@@ -133,17 +132,29 @@ export class LocationsPage {
   }
 
   private saveLocation() {
-    if (this.key) {
-      return this.locationsProvider.update(this.key, this.model);
-    } else {
-      return this.locationsProvider.insert(this.model);
-    }
+    return this.locationsProvider.insert(this.model);
   }
 
   public sendDataToServer(item: LocationList) {
     
-    this.locationsProvider.sendToServer(item.location)
+    if(item == undefined) {
+      let l = this.locations.length;
+      for (let i=0;i<l;i++) {
+        if(!this.locations[i].location.send) {
+          this.sendToServer(this.locations[i].location, this.locations[i].key);
+        }
+      }
+    }else{
+      this.sendToServer(item.location, item.key);
+    }
+    
+  }
+
+  private sendToServer(location: Location, key: string) {
+    this.locationsProvider.sendToServer(location)
       .then(() => {
+        location.send=true;
+        this.locationsProvider.update(key, location);
         this.toast.create({ message: 'Upload com sucesso.', duration: 1500, position: 'botton' }).present();
       })
       .catch(() => {

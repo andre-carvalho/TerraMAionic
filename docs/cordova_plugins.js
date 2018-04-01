@@ -79,6 +79,14 @@ module.exports = [
         "clobbers": [
             "SQLitePlugin"
         ]
+    },
+    {
+        "file": "plugins/com-badrit-base64/www/Base64.js",
+        "id": "com-badrit-base64.Base64",
+        "pluginId": "com-badrit-base64",
+        "clobbers": [
+            "navigator.Base64"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -92,7 +100,8 @@ module.exports.metadata =
     "cordova-plugin-ionic-webview": "1.1.16",
     "cordova-plugin-ionic-keyboard": "2.0.5",
     "cordova-plugin-statusbar": "2.4.1",
-    "cordova-sqlite-storage": "2.3.0"
+    "cordova-sqlite-storage": "2.3.0",
+    "com-badrit-base64": "0.2.0"
 }
 // BOTTOM OF METADATA
 });
