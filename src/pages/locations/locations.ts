@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocationsProvider, Location, LocationList } from '../../providers/locations/locations';
 
-@IonicPage()
 @Component({
   selector: 'page-locations',
   templateUrl: 'locations.html',
