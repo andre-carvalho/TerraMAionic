@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
-import { HttpClient,HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Base64 } from '@ionic-native/base64';
 
 
 /*
@@ -15,7 +16,7 @@ export class LocationsProvider {
 
   private API_URL = 'http://192.168.1.11:5000';
 
-  constructor(private storage: Storage, private datepipe: DatePipe, public http: HttpClient) {
+  constructor( private base64: Base64, private storage: Storage, private datepipe: DatePipe, public http: HttpClient) {
     console.log('Hello LocationsProvider Provider');
   }
 
@@ -42,16 +43,16 @@ export class LocationsProvider {
 
   public getAll() {
 
-    let contacts: LocationList[] = [];
+    let locations: LocationList[] = [];
 
     return this.storage.forEach((value: Location, key: string, iterationNumber: Number) => {
       let location = new LocationList();
       location.key = key;
       location.location = value;
-      contacts.push(location);
+      locations.push(location);
     })
       .then(() => {
-        return Promise.resolve(contacts);
+        return Promise.resolve(locations);
       })
       .catch((error) => {
         return Promise.reject(error);
@@ -59,10 +60,19 @@ export class LocationsProvider {
   }
 
   public sendToServer(location: Location) {
-    return this.postDataToServer(location);
+    if(location.photo.startsWith('file')) {
+      return this.base64.encodeFile(location.photo).then((base64File: string) => {
+        let photo = base64File.replace('data:image/*;charset=utf-8;base64,','');
+        return this.postDataToServer(location, photo);
+      }, (err) => {
+        console.log(err);
+      });
+    }else {
+      return this.postDataToServer(location, location.photo);
+    }
   }
 
-  private postDataToServer(location: any) {
+  private postDataToServer(location: any, photo: string) {
 
     let headers = new HttpHeaders().set('Content-Type', 'application/json');
     headers.append('Access-Control-Allow-Origin' , '*');
@@ -70,13 +80,13 @@ export class LocationsProvider {
     headers.append('Accept','application/json');
 
     let url = this.API_URL + '/locations';
-    
+
     let data = {
       'description':location.description,
       'lat':location.lat,
       'lng':location.lng,
       'datetime':location.timeref.toISOString(),
-      'photo':location.photo
+      'photo':photo
     }
 
     return new Promise((resolve, reject) => {
@@ -91,16 +101,13 @@ export class LocationsProvider {
   }
 }
 
-
-
-
-
 export class Location {
   lat: number;
   lng: number;
   description: string;
   photo: string;
   timeref: Date;
+  send: boolean;
 }
 
 export class LocationList {

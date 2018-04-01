@@ -1,17 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { MapPage } from '../map/map'
 import { AlertController } from 'ionic-angular';
 import { LocationsPage } from '../locations/locations';
 
-/**
- * Generated class for the BurneredPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
-
-@IonicPage()
 @Component({
   selector: 'page-burnered',
   templateUrl: 'burnered.html',

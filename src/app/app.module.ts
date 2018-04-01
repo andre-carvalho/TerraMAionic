@@ -8,6 +8,7 @@ import { Camera } from '@ionic-native/camera';
 import { IonicStorageModule } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { Base64 } from '@ionic-native/base64';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -49,7 +50,8 @@ import { LocationsProvider } from '../providers/locations/locations';
     LocationsProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatePipe,
-    LocationsProvider
+    LocationsProvider,
+    Base64
   ]
 })
 export class AppModule {}
