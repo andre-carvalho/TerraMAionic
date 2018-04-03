@@ -17,11 +17,13 @@ export class MapPage {
   markers: any;
   watchLocation: any;
   currentLocation: any;
+  currentCoords: any;
   public btColor: string = '#c0c0c0';
   
   constructor(private alertCtrl: AlertController,
               public navCtrl: NavController, public geolocation: Geolocation) {
     this.markers = [];
+    this.currentCoords = {'lat':0, 'lng':0};
   }
 
   goToLocations() {
@@ -33,6 +35,19 @@ export class MapPage {
         startCamera: true
       });
     }
+  }
+
+  useCurrentCoords() {
+    this.navCtrl.push(LocationsPage, {
+      currentLat: this.currentCoords.lat,
+      currentLng: this.currentCoords.lng,
+      startCamera: false
+    });
+  }
+
+  setCurrentCoords(lat, lng) {
+    this.currentCoords.lat=lat;
+    this.currentCoords.lng=lng;
   }
 
   /* Initialize the map only when Ion View is loaded */
@@ -53,25 +68,41 @@ export class MapPage {
     let marker = new google.maps.Marker({
         map: this.map,
         animation: google.maps.Animation.DROP,
-        position: newPosition
+        position: newPosition,
+        draggable: true
     });
 
     this.markers.push(marker);
 
-    let lat = marker.getPosition().lat();
-    let lng = marker.getPosition().lng();
-
-    let markerInfo = '<h4>Latitude:'+lat.toFixed(4)+'</h4>'+
-    '<h4>Longitude:'+lng.toFixed(4)+'</h4>';
-
-    let infoModal = new google.maps.InfoWindow({
-        content: markerInfo
-    });
-
     google.maps.event.addListener(marker, 'click', () => {
-        infoModal.open(this.map, marker);
+      let lat = marker.getPosition().lat();
+      let lng = marker.getPosition().lng();
+
+      let markerInfo = '<h6>Latitude:'+lat.toFixed(4)+'</h6>'+
+      '<h6>Longitude:'+lng.toFixed(4)+'</h6><input type="button" value="Usar este local" '+
+      'onclick="document.getElementById(\'infowindowhidden\').click()" />';
+
+      let infoModal = new google.maps.InfoWindow({
+          content: markerInfo
+      });
+      
+      infoModal.open(this.map, marker);
+
+      this.setCurrentCoords(lat, lng);
     });
+
+    // google.maps.event.addListener(marker, 'drag', () => {
+    //   this.resetMarkerPosition(marker);
+    // });
+    
+    // google.maps.event.addListener(marker, 'dragend', () => {
+    //   this.resetMarkerPosition(marker);
+    // });
   }
+
+  // resetMarkerPosition(marker) {
+    
+  // }
 
   initializeMap() {
 
