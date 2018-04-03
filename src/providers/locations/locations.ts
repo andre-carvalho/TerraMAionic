@@ -20,6 +20,14 @@ export class LocationsProvider {
     console.log('Hello LocationsProvider Provider');
   }
 
+  public setServerURL(url: string) {
+    this.API_URL=url;
+  }
+
+  public getServerURL() {
+    return this.API_URL;
+  }
+
   public insert(location: Location) {
     let key = this.datepipe.transform(new Date(), "ddMMyyyyHHmmss");
     location.timeref = new Date();

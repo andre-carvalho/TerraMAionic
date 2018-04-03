@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
+import { AlertController } from 'ionic-angular';
 import { Camera, CameraOptions } from '@ionic-native/camera';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocationsProvider, Location, LocationList } from '../../providers/locations/locations';
@@ -31,7 +32,7 @@ export class LocationsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public geolocation: Geolocation,
     private camera: Camera, private locationsProvider: LocationsProvider,
-    private toast: ToastController) {
+    private toast: ToastController, private alertCtrl: AlertController) {
       this.currentLat = this.navParams.get('currentLat');
       this.currentLng = this.navParams.get('currentLng');
       this.startCamera = this.navParams.get('startCamera');
@@ -147,6 +148,40 @@ export class LocationsPage {
       this.sendToServer(item.location, item.key);
     }
     
+  }
+
+  public setServerURL() {
+    let alert = this.alertCtrl.create({
+      title: 'Serviço para envio de dados',
+      inputs: [
+        {
+          name: 'server_url',
+          placeholder: this.locationsProvider.getServerURL(),
+          type: 'url'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Atribuir',
+          handler: data => {
+            if (data.server_url) {
+              this.locationsProvider.setServerURL(data.server_url);
+            } else {
+              console.log('Input URL is undefined');
+              return false;
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   private sendToServer(location: Location, key: string) {
