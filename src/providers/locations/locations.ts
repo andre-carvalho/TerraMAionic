@@ -14,7 +14,7 @@ import { Base64 } from '@ionic-native/base64';
 @Injectable()
 export class LocationsProvider {
 
-  private API_URL = 'http://192.168.1.11:5000';
+  private API_URL = 'http://www.terrama2.dpi.inpe.br/vita3';
 
   constructor( private base64: Base64, private storage: Storage, private datepipe: DatePipe, public http: HttpClient) {
     console.log('Hello LocationsProvider Provider');
