@@ -88,21 +88,21 @@ export class MapPage {
       
       infoModal.open(this.map, marker);
 
+      marker.getInfoModal=function(){
+        return infoModal;
+      };
+
       this.setCurrentCoords(lat, lng);
     });
 
-    // google.maps.event.addListener(marker, 'drag', () => {
-    //   this.resetMarkerPosition(marker);
-    // });
+    google.maps.event.addListener(marker, 'dragstart', () => {
+      marker.getInfoModal().close();
+    });
     
     // google.maps.event.addListener(marker, 'dragend', () => {
     //   this.resetMarkerPosition(marker);
     // });
   }
-
-  // resetMarkerPosition(marker) {
-    
-  // }
 
   initializeMap() {
 

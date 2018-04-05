@@ -34,7 +34,7 @@
       </ion-item>
 
       <ion-item>
-        <p>Lat/Long( <span [innerHTML]="currentLat"></span>, <span [innerHTML]="currentLng"></span> )</p>
+        <p>Lat/Long( <span [innerHTML]="model.lat"></span>, <span [innerHTML]="model.lng"></span> )</p>
 
         <button ion-button icon-left clear item-end (click)="save()">
           <ion-icon name="done-all"></ion-icon> Salvar

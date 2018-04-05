@@ -72,13 +72,11 @@ var LocationsPage = /** @class */ (function () {
             .then(function (result) {
             _this.locations = result;
             _this.locations.reverse();
-            _this.createNewLocation();
         });
     };
     LocationsPage.prototype.createNewLocation = function () {
         if (!this.model) {
             this.model = new __WEBPACK_IMPORTED_MODULE_4__providers_locations_locations__["a" /* Location */]();
-            this.catchLocation();
         }
     };
     LocationsPage.prototype.removeLocation = function (item) {
@@ -117,8 +115,6 @@ var LocationsPage = /** @class */ (function () {
         this.geolocation.getCurrentPosition(locationOptions).then(function (position) {
             _this.model.lat = +(position.coords.latitude).toFixed(4);
             _this.model.lng = +(position.coords.longitude).toFixed(4);
-            _this.currentLat = +(position.coords.latitude).toFixed(4);
-            _this.currentLng = +(position.coords.longitude).toFixed(4);
         }).catch(function (error) {
             console.log('Error getting location', error);
             _this.toast.create({ message: 'Falhou ao capturar sua localização.', duration: 1500, position: 'botton' }).present();
@@ -130,7 +126,9 @@ var LocationsPage = /** @class */ (function () {
             .then(function () {
             _this.toast.create({ message: 'Local salvo.', duration: 1500, position: 'botton' }).present();
             _this.model = undefined;
+            _this.createNewLocation();
             _this.reloadLocations();
+            _this.catchLocation();
         })
             .catch(function () {
             _this.toast.create({ message: 'Erro ao salvar o local.', duration: 1500, position: 'botton' }).present();
@@ -201,7 +199,7 @@ var LocationsPage = /** @class */ (function () {
     };
     LocationsPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-locations',template:/*ion-inline-start:"/home/andre/Projects/IonicAppTheming/src/pages/locations/locations.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons end>\n      <button ion-button (click)="sendDataToServer()">\n        <ion-icon name="cloud-upload"></ion-icon>\n      </button>\n      <button ion-button (click)="setServerURL()">\n        <ion-icon name="options"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>Lista de lugares</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list *ngIf="model">\n    <ion-card>\n\n      <ion-item>\n\n        <ion-thumbnail item-start>\n          <img [src]="prepareHeader(model.photo)" *ngIf="model && model.photo">\n        </ion-thumbnail>\n        \n        <button ion-button block icon-right color="default" (click)="takePicture()" *ngIf="model && !model.photo">\n          Capturar uma foto\n          <ion-icon name="camera"></ion-icon>\n        </button>\n      </ion-item>\n      \n      <ion-item>\n        <ion-label floating>Descrição</ion-label>\n        <ion-input type="text" name="description" [(ngModel)]="model.description"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <p>Lat/Long( <span [innerHTML]="currentLat"></span>, <span [innerHTML]="currentLng"></span> )</p>\n\n        <button ion-button icon-left clear item-end (click)="save()">\n          <ion-icon name="done-all"></ion-icon> Salvar\n        </button>\n      </ion-item>\n      \n    </ion-card>\n  </ion-list>\n\n  <ion-list>\n    <ion-card *ngFor="let item of locations">\n      <ion-item>\n        <ion-thumbnail item-start>\n          <img [src]="prepareHeader(item.location.photo)" *ngIf="item.location.photo">\n        </ion-thumbnail>\n        <p>Criação: {{ item.location.timeref | date:\'dd/MM/yyyy\' }}</p>\n\n        <p>Descrição: {{ item.location.description }}</p>\n      </ion-item>\n      <ion-item>\n        <p>Lat/Long( {{ item.location.lat }} , {{ item.location.lng }} )</p>\n\n        <button ion-button icon-left clear item-end (click)="removeLocation(item)">\n          <ion-icon name="trash"></ion-icon>\n        </button>\n        <button ion-button icon-left clear item-end (click)="sendDataToServer(item)" *ngIf="!item.location.send">\n          <ion-icon name="cloud-upload"></ion-icon>\n        </button>\n      </ion-item>\n      \n    </ion-card>\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"/home/andre/Projects/IonicAppTheming/src/pages/locations/locations.html"*/,
+            selector: 'page-locations',template:/*ion-inline-start:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/locations/locations.html"*/'<ion-header>\n  <ion-navbar>\n    <ion-buttons end>\n      <button ion-button (click)="sendDataToServer()">\n        <ion-icon name="cloud-upload"></ion-icon>\n      </button>\n      <button ion-button (click)="setServerURL()">\n        <ion-icon name="options"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>Lista de lugares</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-list *ngIf="model">\n    <ion-card>\n\n      <ion-item>\n\n        <ion-thumbnail item-start>\n          <img [src]="prepareHeader(model.photo)" *ngIf="model && model.photo">\n        </ion-thumbnail>\n        \n        <button ion-button block icon-right color="default" (click)="takePicture()" *ngIf="model && !model.photo">\n          Capturar uma foto\n          <ion-icon name="camera"></ion-icon>\n        </button>\n      </ion-item>\n      \n      <ion-item>\n        <ion-label floating>Descrição</ion-label>\n        <ion-input type="text" name="description" [(ngModel)]="model.description"></ion-input>\n      </ion-item>\n\n      <ion-item>\n        <p>Lat/Long( <span [innerHTML]="model.lat"></span>, <span [innerHTML]="model.lng"></span> )</p>\n\n        <button ion-button icon-left clear item-end (click)="save()">\n          <ion-icon name="done-all"></ion-icon> Salvar\n        </button>\n      </ion-item>\n      \n    </ion-card>\n  </ion-list>\n\n  <ion-list>\n    <ion-card *ngFor="let item of locations">\n      <ion-item>\n        <ion-thumbnail item-start>\n          <img [src]="prepareHeader(item.location.photo)" *ngIf="item.location.photo">\n        </ion-thumbnail>\n        <p>Criação: {{ item.location.timeref | date:\'dd/MM/yyyy\' }}</p>\n\n        <p>Descrição: {{ item.location.description }}</p>\n      </ion-item>\n      <ion-item>\n        <p>Lat/Long( {{ item.location.lat }} , {{ item.location.lng }} )</p>\n\n        <button ion-button icon-left clear item-end (click)="removeLocation(item)">\n          <ion-icon name="trash"></ion-icon>\n        </button>\n        <button ion-button icon-left clear item-end (click)="sendDataToServer(item)" *ngIf="!item.location.send">\n          <ion-icon name="cloud-upload"></ion-icon>\n        </button>\n      </ion-item>\n      \n    </ion-card>\n  </ion-list>\n\n</ion-content>'/*ion-inline-end:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/locations/locations.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_geolocation__["a" /* Geolocation */],
             __WEBPACK_IMPORTED_MODULE_2__ionic_native_camera__["a" /* Camera */], __WEBPACK_IMPORTED_MODULE_4__providers_locations_locations__["b" /* LocationsProvider */],
@@ -277,7 +275,7 @@ var HomePage = /** @class */ (function () {
     };
     HomePage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-home',template:/*ion-inline-start:"/home/andre/Projects/IonicAppTheming/src/pages/home/home.html"*/'<ion-header no-border>\n  <ion-navbar transparent>\n    <ion-title>\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col col-3></ion-col>\n      <ion-col col-6>\n        <ion-item text-wrap>\n          Eu Fiscal\n          <div class="eufiscalborder"></div>\n        </ion-item>\n      </ion-col>\n      <ion-col col-3></ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-12 class="text1">\n        Insira seus dados para login\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-2></ion-col>\n      <ion-col col-8>\n        <ion-item>\n          <ion-label floating>Usuário</ion-label>\n          <ion-input type="text" value=""></ion-input>\n        </ion-item>\n      \n        <ion-item>\n          <ion-label floating>Senha</ion-label>\n          <ion-input type="password"></ion-input>\n        </ion-item>\n      </ion-col>\n      <ion-col col-2></ion-col>\n    </ion-row>\n   \n    <ion-row>\n      <ion-col col-2></ion-col>\n      <ion-col col-8 class="text2">\n        <div class="forgotpass">Esqueci minha senha\n        </div>\n      </ion-col>\n      <ion-col col-2></ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-12 style="text-align:center;">\n        <button ion-button icon-end round (click)="goToBurnered()">\n          Login<ion-icon name="person"></ion-icon>\n        </button>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-12>\n        <ion-label class="text3">Ainda não é cadastrado?</ion-label>\n        <ion-label class="text4">Cadastre-se agora</ion-label>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/home/andre/Projects/IonicAppTheming/src/pages/home/home.html"*/
+            selector: 'page-home',template:/*ion-inline-start:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/home/home.html"*/'<ion-header no-border>\n  <ion-navbar transparent>\n    <ion-title>\n    </ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content padding>\n  <ion-grid>\n    <ion-row>\n      <ion-col col-3></ion-col>\n      <ion-col col-6>\n        <ion-item text-wrap>\n          Eu Fiscal\n          <div class="eufiscalborder"></div>\n        </ion-item>\n      </ion-col>\n      <ion-col col-3></ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-12 class="text1">\n        Insira seus dados para login\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-2></ion-col>\n      <ion-col col-8>\n        <ion-item>\n          <ion-label floating>Usuário</ion-label>\n          <ion-input type="text" value=""></ion-input>\n        </ion-item>\n      \n        <ion-item>\n          <ion-label floating>Senha</ion-label>\n          <ion-input type="password"></ion-input>\n        </ion-item>\n      </ion-col>\n      <ion-col col-2></ion-col>\n    </ion-row>\n   \n    <ion-row>\n      <ion-col col-2></ion-col>\n      <ion-col col-8 class="text2">\n        <div class="forgotpass">Esqueci minha senha\n        </div>\n      </ion-col>\n      <ion-col col-2></ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-12 style="text-align:center;">\n        <button ion-button icon-end round (click)="goToBurnered()">\n          Login<ion-icon name="person"></ion-icon>\n        </button>\n      </ion-col>\n    </ion-row>\n    <ion-row>\n      <ion-col col-12>\n        <ion-label class="text3">Ainda não é cadastrado?</ion-label>\n        <ion-label class="text4">Cadastre-se agora</ion-label>\n      </ion-col>\n    </ion-row>\n  </ion-grid>\n</ion-content>\n'/*ion-inline-end:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/home/home.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */]])
     ], HomePage);
@@ -348,7 +346,7 @@ var BurneredPage = /** @class */ (function () {
     };
     BurneredPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-burnered',template:/*ion-inline-start:"/home/andre/Projects/IonicAppTheming/src/pages/burnered/burnered.html"*/'<!--\n  Generated template for the BurneredPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Queimadas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-grid>\n      <ion-row>\n        <ion-col col-3></ion-col>\n        <ion-col col-6>\n          <ion-item text-wrap>\n            Eu Fiscal\n            <div class="eufiscalborder"></div>\n          </ion-item>\n        </ion-col>\n        <ion-col col-3></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-12 class="burnedtext">\n          QUEIMADAS\n          <div class="burnedborder"></div>\n        </ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-1></ion-col>\n        <ion-col col-10 class="text1">\n            Queimada é uma prática primitiva da agricultura, destinada principalmente à limpeza do terreno para o cultivo de plantações ou formação de pastos, com uso do fogo de forma controlada que às vezes pode descontrolar-se e causar incêndios em florestas, matas e terrenos grandes.\n        </ion-col>\n        <ion-col col-1></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-1></ion-col>\n        <ion-col col-10 class="text2">\n          Agora você pode nos ajudar a fiscalizar as queimadas.\n        </ion-col>\n        <ion-col col-1></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-12>\n          <ion-label class="textred">Viu alguma queimada?</ion-label>\n          <ion-label class="textred">Denuncie!</ion-label>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n\n    <ion-fab bottom center>\n      <button ion-fab (click)="goToCamera()">\n        <ion-icon name="camera"></ion-icon>\n      </button>\n    </ion-fab>\n\n  </ion-content>\n  <ion-footer>\n    <ion-toolbar>\n      <ion-grid>\n        <ion-row>\n          <ion-col col-1></ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToInfo()">\n              <ion-icon name="information-circle"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToMap()">\n              <ion-icon name="pin"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-2>\n          </ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToEdit()">\n              <ion-icon name="list-box"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToEdit()">\n              <ion-icon name="cloud-upload"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-1></ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-toolbar>\n  </ion-footer>'/*ion-inline-end:"/home/andre/Projects/IonicAppTheming/src/pages/burnered/burnered.html"*/,
+            selector: 'page-burnered',template:/*ion-inline-start:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/burnered/burnered.html"*/'<!--\n  Generated template for the BurneredPage page.\n\n  See http://ionicframework.com/docs/components/#navigation for more info on\n  Ionic pages and navigation.\n-->\n<ion-header>\n\n  <ion-navbar>\n    <ion-title>Queimadas</ion-title>\n  </ion-navbar>\n\n</ion-header>\n\n\n<ion-content padding>\n    <ion-grid>\n      <ion-row>\n        <ion-col col-3></ion-col>\n        <ion-col col-6>\n          <ion-item text-wrap>\n            Eu Fiscal\n            <div class="eufiscalborder"></div>\n          </ion-item>\n        </ion-col>\n        <ion-col col-3></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-12 class="burnedtext">\n          QUEIMADAS\n          <div class="burnedborder"></div>\n        </ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-1></ion-col>\n        <ion-col col-10 class="text1">\n            Queimada é uma prática primitiva da agricultura, destinada principalmente à limpeza do terreno para o cultivo de plantações ou formação de pastos, com uso do fogo de forma controlada que às vezes pode descontrolar-se e causar incêndios em florestas, matas e terrenos grandes.\n        </ion-col>\n        <ion-col col-1></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-1></ion-col>\n        <ion-col col-10 class="text2">\n          Agora você pode nos ajudar a fiscalizar as queimadas.\n        </ion-col>\n        <ion-col col-1></ion-col>\n      </ion-row>\n      <ion-row>\n        <ion-col col-12>\n          <ion-label class="textred">Viu alguma queimada?</ion-label>\n          <ion-label class="textred">Denuncie!</ion-label>\n        </ion-col>\n      </ion-row>\n    </ion-grid>\n\n    <ion-fab bottom center>\n      <button ion-fab (click)="goToCamera()">\n        <ion-icon name="camera"></ion-icon>\n      </button>\n    </ion-fab>\n\n  </ion-content>\n  <ion-footer>\n    <ion-toolbar>\n      <ion-grid>\n        <ion-row>\n          <ion-col col-1></ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToInfo()">\n              <ion-icon name="information-circle"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToMap()">\n              <ion-icon name="pin"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-2>\n          </ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToEdit()">\n              <ion-icon name="list-box"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-2>\n            <button icon-only (click)="goToEdit()">\n              <ion-icon name="cloud-upload"></ion-icon>\n            </button>\n          </ion-col>\n          <ion-col col-1></ion-col>\n        </ion-row>\n      </ion-grid>\n    </ion-toolbar>\n  </ion-footer>'/*ion-inline-end:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/burnered/burnered.html"*/,
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["f" /* NavParams */], __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */]])
     ], BurneredPage);
@@ -432,36 +430,27 @@ var MapPage = /** @class */ (function () {
             draggable: true
         });
         this.markers.push(marker);
-        var lat = marker.getPosition().lat();
-        var lng = marker.getPosition().lng();
-        var markerInfo = '<h6>Latitude:' + lat.toFixed(4) + '</h6>' +
-            '<h6>Longitude:' + lng.toFixed(4) + '</h6><input type="button" value="Usar este local" ' +
-            'onclick="document.getElementById(\'infowindowhidden\').click()" />';
-        var infoModal = new google.maps.InfoWindow({
-            content: markerInfo
-        });
         google.maps.event.addListener(marker, 'click', function () {
-            infoModal.open(_this.map, marker);
             var lat = marker.getPosition().lat();
             var lng = marker.getPosition().lng();
+            var markerInfo = '<h6>Latitude:' + lat.toFixed(4) + '</h6>' +
+                '<h6>Longitude:' + lng.toFixed(4) + '</h6><input type="button" value="Usar este local" ' +
+                'onclick="document.getElementById(\'infowindowhidden\').click()" />';
+            var infoModal = new google.maps.InfoWindow({
+                content: markerInfo
+            });
+            infoModal.open(_this.map, marker);
             _this.setCurrentCoords(lat, lng);
         });
-        google.maps.event.addListener(marker, 'drag', function () {
-            _this.resetMarkerPosition(marker, infoModal);
-        });
-        google.maps.event.addListener(marker, 'dragend', function () {
-            _this.resetMarkerPosition(marker, infoModal);
-        });
+        // google.maps.event.addListener(marker, 'drag', () => {
+        //   this.resetMarkerPosition(marker);
+        // });
+        // google.maps.event.addListener(marker, 'dragend', () => {
+        //   this.resetMarkerPosition(marker);
+        // });
     };
-    MapPage.prototype.resetMarkerPosition = function (marker, infoModal) {
-        var lat = marker.getPosition().lat();
-        var lng = marker.getPosition().lng();
-        var markerInfo = '<h6>Latitude:' + lat.toFixed(4) + '</h6>' +
-            '<h6>Longitude:' + lng.toFixed(4) + '</h6><input type="button" value="Usar este local" ' +
-            'onclick="document.getElementById(\'infowindowhidden\').click()" />';
-        infoModal.content = markerInfo;
-        infoModal.marker = marker;
-    };
+    // resetMarkerPosition(marker) {
+    // }
     MapPage.prototype.initializeMap = function () {
         var demoCenter = new google.maps.LatLng(-23, -45);
         var options = {
@@ -544,7 +533,7 @@ var MapPage = /** @class */ (function () {
     };
     MapPage = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({
-            selector: 'page-map',template:/*ion-inline-start:"/home/andre/Projects/IonicAppTheming/src/pages/map/map.html"*/'<ion-header>\n  <ion-navbar>      \n    <ion-buttons end>\n      <button style="visibility: hidden;" id="infowindowhidden" (click)="useCurrentCoords()"></button>\n      <button ion-button icon-only (click)="goToLocations()">\n          <ion-icon name="camera"></ion-icon>\n      </button>\n      <button ion-button icon-only [ngStyle]="{\'background-color\': btColor }" (click)="startWatchingLocation()">\n          <ion-icon name="locate"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>Mapa</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-fab bottom right>\n    <button ion-fab mini><ion-icon name="pin"></ion-icon></button>\n    <ion-fab-list side="left">\n      <button ion-fab mini (click)="addLocation()"><ion-icon name="add-circle"></ion-icon></button>\n      <button ion-fab mini (click)="removeLastLocation()"><ion-icon name="remove-circle"></ion-icon></button>\n    </ion-fab-list>\n  </ion-fab>\n  \n  <div id="map_canvas"></div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/andre/Projects/IonicAppTheming/src/pages/map/map.html"*/
+            selector: 'page-map',template:/*ion-inline-start:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/map/map.html"*/'<ion-header>\n  <ion-navbar>      \n    <ion-buttons end>\n      <button style="visibility: hidden;" id="infowindowhidden" (click)="useCurrentCoords()"></button>\n      <button ion-button icon-only (click)="goToLocations()">\n          <ion-icon name="camera"></ion-icon>\n      </button>\n      <button ion-button icon-only [ngStyle]="{\'background-color\': btColor }" (click)="startWatchingLocation()">\n          <ion-icon name="locate"></ion-icon>\n      </button>\n    </ion-buttons>\n    <ion-title>Mapa</ion-title>\n  </ion-navbar>\n</ion-header>\n\n<ion-content>\n  <ion-fab bottom right>\n    <button ion-fab mini><ion-icon name="pin"></ion-icon></button>\n    <ion-fab-list side="left">\n      <button ion-fab mini (click)="addLocation()"><ion-icon name="add-circle"></ion-icon></button>\n      <button ion-fab mini (click)="removeLastLocation()"><ion-icon name="remove-circle"></ion-icon></button>\n    </ion-fab-list>\n  </ion-fab>\n  \n  <div id="map_canvas"></div>\n  \n</ion-content>\n'/*ion-inline-end:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/pages/map/map.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["a" /* AlertController */],
             __WEBPACK_IMPORTED_MODULE_1_ionic_angular__["e" /* NavController */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_geolocation__["a" /* Geolocation */]])
@@ -594,7 +583,7 @@ var LocationsProvider = /** @class */ (function () {
         this.storage = storage;
         this.datepipe = datepipe;
         this.http = http;
-        this.API_URL = 'http://192.168.1.11:5000';
+        this.API_URL = 'http://www.terrama2.dpi.inpe.br/vita3';
         console.log('Hello LocationsProvider Provider');
     }
     LocationsProvider.prototype.setServerURL = function (url) {
@@ -840,7 +829,7 @@ var MyApp = /** @class */ (function () {
         });
     }
     MyApp = __decorate([
-        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/andre/Projects/IonicAppTheming/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/andre/Projects/IonicAppTheming/src/app/app.html"*/
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["m" /* Component */])({template:/*ion-inline-start:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/app/app.html"*/'<ion-nav [root]="rootPage"></ion-nav>\n'/*ion-inline-end:"/home/andre/Documentos/IonicProjects/TerraMAionic/src/app/app.html"*/
         }),
         __metadata("design:paramtypes", [__WEBPACK_IMPORTED_MODULE_1_ionic_angular__["g" /* Platform */], __WEBPACK_IMPORTED_MODULE_2__ionic_native_status_bar__["a" /* StatusBar */], __WEBPACK_IMPORTED_MODULE_3__ionic_native_splash_screen__["a" /* SplashScreen */]])
     ], MyApp);

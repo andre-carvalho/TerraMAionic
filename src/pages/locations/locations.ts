@@ -42,7 +42,6 @@ export class LocationsPage {
     console.log('ionViewDidLoad LocationsPage');
     
     this.createNewLocation();
-
     this.reloadLocations();
 
     if(this.startCamera) {
@@ -62,14 +61,12 @@ export class LocationsPage {
       .then((result) => {
         this.locations = result;
         this.locations.reverse();
-        this.createNewLocation();
       });
   }
 
   createNewLocation() {
     if(!this.model) {
       this.model = new Location();
-      this.catchLocation();
     }
   }
 
@@ -110,8 +107,6 @@ export class LocationsPage {
 
       this.model.lat = +(position.coords.latitude).toFixed(4);
       this.model.lng = +(position.coords.longitude).toFixed(4);
-      this.currentLat = +(position.coords.latitude).toFixed(4);
-      this.currentLng = +(position.coords.longitude).toFixed(4);
 
     }).catch((error) => {
       console.log('Error getting location', error);
@@ -124,7 +119,9 @@ export class LocationsPage {
       .then(() => {
         this.toast.create({ message: 'Local salvo.', duration: 1500, position: 'botton' }).present();
         this.model=undefined;
+        this.createNewLocation();
         this.reloadLocations();
+        this.catchLocation();
       })
       .catch(() => {
         this.toast.create({ message: 'Erro ao salvar o local.', duration: 1500, position: 'botton' }).present();
