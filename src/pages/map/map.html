@@ -2,6 +2,9 @@
   <ion-navbar>      
     <ion-buttons end>
       <button style="visibility: hidden;" id="infowindowhidden" (click)="useCurrentCoords()"></button>
+      <button ion-button icon-only (click)="reloadLocations()">
+        <ion-icon name="pin"></ion-icon>
+      </button>
       <button ion-button icon-only (click)="goToLocations()">
           <ion-icon name="camera"></ion-icon>
       </button>

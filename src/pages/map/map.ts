@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import { AlertController } from 'ionic-angular';
 import { Geolocation } from '@ionic-native/geolocation';
 import { LocationsPage } from '../locations/locations';
+import { LocationsProvider, LocationList } from '../../providers/locations/locations';
 
 declare var google;
 
@@ -13,17 +14,25 @@ declare var google;
 
 export class MapPage {
 
+  locations: LocationList[];
   map: any;
   markers: any;
   watchLocation: any;
   currentLocation: any;
   currentCoords: any;
+  savedLocations: any;
   public btColor: string = '#c0c0c0';
   
-  constructor(private alertCtrl: AlertController,
+  constructor(private alertCtrl: AlertController, private locationsProvider: LocationsProvider,
               public navCtrl: NavController, public geolocation: Geolocation) {
     this.markers = [];
     this.currentCoords = {'lat':0, 'lng':0};
+  }
+
+  /* Initialize the map only when Ion View is loaded */
+  ionViewDidLoad(){
+    this.initializeMap();
+    this.addLocation();
   }
 
   goToLocations() {
@@ -48,12 +57,6 @@ export class MapPage {
   setCurrentCoords(lat, lng) {
     this.currentCoords.lat=lat;
     this.currentCoords.lng=lng;
-  }
-
-  /* Initialize the map only when Ion View is loaded */
-  ionViewDidLoad(){
-    this.initializeMap();
-    this.addLocation();
   }
 
   /*
@@ -196,6 +199,50 @@ export class MapPage {
     while(this.markers.length) {
       this.removeLastLocation();
     }
+  }
+
+  reloadLocations() {
+    this.locationsProvider.getAll()
+      .then((result) => {
+        this.locations = result;
+        this.displaySavedMarkers(this.locations);
+      });
+  }
+
+  displaySavedMarkers(locations: LocationList[]) {
+    this.savedLocations = [];
+    let localColor = "FE7569";
+    let localImage = new google.maps.MarkerImage(
+      "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + localColor,
+      new google.maps.Size(21, 34),
+      new google.maps.Point(0,0),
+      new google.maps.Point(10, 34)
+    );
+    let remoteColor = "5cf5e0";
+    let remoteImage = new google.maps.MarkerImage(
+      "http://chart.apis.google.com/chart?chst=d_map_pin_letter&chld=%E2%80%A2|" + remoteColor,
+      new google.maps.Size(21, 34),
+      new google.maps.Point(0,0),
+      new google.maps.Point(10, 34)
+    );
+    for (const key in locations) {
+      if (locations.hasOwnProperty(key)) {
+        const item = locations[key];
+        if (item.location != undefined) {
+          let newPosition = new google.maps.LatLng(item.location.lat, item.location.lng);
+
+          this.savedLocations.push(new google.maps.Marker({
+              map: this.map,
+              position: newPosition,
+              title: item.location.description,
+              label: ((item.location.send)?('R'):('L')),
+              icon: ((item.location.send)?(remoteImage):(localImage))
+            })
+          );
+        }
+      }
+    }
+    
   }
 
 }
