@@ -19,12 +19,11 @@ page-home {
     }
     .text2 {
         font-size: small;
-        text-align: end;
         text-decoration: underline;
     }
 
     .text4 {
-        font-size: xx-large;
+        font-size: x-large;
     }
 
     .space{
@@ -32,11 +31,11 @@ page-home {
     }
 
     .button-md, .button-md:hover:not(.disable-hover) {
-        background-color: #ed8f03;
+        background-color: #091739;
     }
 
     [text-wrap] .label-md{
-        color: #ed8f03;
+        color: #69f4f4;
         font-size: x-large;
         text-align: center;
         font-weight: bold;
@@ -47,9 +46,8 @@ page-home {
     [col-6] .item-md.item-block .item-inner{
         border: none;
     }
-
-    .eufiscalborder {
-        border-bottom: solid #ed8f03 2px;
+    .attempoborder {
+        border-bottom: solid #fbe07b 2px;
         margin-left: 30%;
         margin-right: 30%;
     }

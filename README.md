@@ -97,8 +97,45 @@ $ ionic g provider LocationsProvider
 
 Edit your app.module.ts to include provider configurations.
 
+
+## Build in debug and release
+
+Using the help command to see all options.
+
+```
+ionic cordova build --help
+```
+
+For the final build, i used this command.
+```
+ionic cordova build android --prod --release --minifyjs --minifycss --optimizejs
+```
+
+And to sign the APK i followed the official instruction in [that page](https://developer.android.com/studio/publish/app-signing#sign-manually).
+
+
 ## Deploy to android device
 
 ```
 $ ionic cordova run android --release
+```
+
+
+## Reinstall after clone into new environment
+
+To reinstall all packages from package.json we use this steps:
+
+- First install both ionic and cordova cli.(It is an ionic v1 project with android/ios platforms) from your package.json.
+```
+npm i -g cordova ionic
+```
+
+- To install dependencies and devDependencies, do:
+```
+npm install
+```
+
+- To install plugins and platforms as per package.json,
+```
+ionic cordova prepare
 ```
