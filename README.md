@@ -119,8 +119,8 @@ To sign the APK i followed the official instruction in [that page](https://devel
 Tasks:
 
 - Generate a key once (the same key is valid to 10000 ?days?).
-- apply key into apk
-- 
+- Align APK
+- Apply key into apk
 
 ```
 # Path to Android build tools: /home/andre/Android/Sdk/build-tools/28.0.3
@@ -129,10 +129,11 @@ Tasks:
 keytool -genkey -v -keystore attempo-app-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias attempo-alias
 
 
+# align apk
+zipalign -f -v -p 4 ./platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ./platforms/android/app/build/outputs/apk/release/app-release-unsigned-align.apk
+
 # apply signature. Key is in the .keystore directory in project root.
-apksigner sign --ks .keystore/android/attempo-app-key.jks \
---out terrama-data-collector.apk  \
-./platforms/android/app/build/outputs/apk/release/app-release-unsigned-align.apk
+apksigner sign --ks .keystore/android/attempo-app-key.jks --out terrama-data-collector.apk ./platforms/android/app/build/outputs/apk/release/app-release-unsigned-align.apk
 
 # verify the apk's signature
 apksigner verify \ ~/Projects/workspace-mobile/TerraMAionic/terrama-data-collector.apk
