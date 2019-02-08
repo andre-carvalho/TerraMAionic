@@ -14,14 +14,23 @@ import { Base64 } from '@ionic-native/base64';
 @Injectable()
 export class LocationsProvider {
 
-  private API_URL = 'http://34.73.41.223';
+  private API_URL = '34.73.204.101';
 
   constructor( private base64: Base64, private storage: Storage, private datepipe: DatePipe, public http: HttpClient) {
-    console.log('Hello LocationsProvider Provider');
+    
+    this.storage.get('api_url')
+      .then((url: string) => {
+        this.API_URL=(url && url!="")?(url):(this.API_URL);
+      })
+      .catch(() => {
+        console.log('Configure uma URL para envio dos dados.');
+      });
   }
 
   public setServerURL(url: string) {
+    url=url.replace(/https:\/\/|http:\/\//gi, "");
     this.API_URL=url;
+    this.storage.set('api_url', url);
   }
 
   public getServerURL() {
@@ -54,10 +63,12 @@ export class LocationsProvider {
     let locations: LocationList[] = [];
 
     return this.storage.forEach((value: Location, key: string, iterationNumber: Number) => {
-      let location = new LocationList();
-      location.key = key;
-      location.location = value;
-      locations.push(location);
+      if(key!="api_url") {
+        let location = new LocationList();
+        location.key = key;
+        location.location = value;
+        locations.push(location);
+      }
     })
       .then(() => {
         return Promise.resolve(locations);
@@ -87,7 +98,7 @@ export class LocationsProvider {
     headers.append('Access-Control-Allow-Methods', 'POST, GET, OPTIONS, PUT');
     headers.append('Accept','application/json');
 
-    let url = this.API_URL + '/locations';
+    let url = 'http://' + this.API_URL + '/locations';
 
     let data = {
       'description':location.description,

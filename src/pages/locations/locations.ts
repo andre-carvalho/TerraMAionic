@@ -153,7 +153,7 @@ export class LocationsPage {
       inputs: [
         {
           name: 'server_url',
-          placeholder: this.locationsProvider.getServerURL(),
+          value: 'http://'+this.locationsProvider.getServerURL(),
           type: 'url'
         }
       ],
@@ -166,7 +166,7 @@ export class LocationsPage {
           }
         },
         {
-          text: 'Atribuir',
+          text: 'Confirmar',
           handler: data => {
             if (data.server_url) {
               this.locationsProvider.setServerURL(data.server_url);
