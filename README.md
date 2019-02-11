@@ -126,18 +126,26 @@ Tasks:
 # Path to Android build tools: /home/andre/Android/Sdk/build-tools/28.0.3
 
 # generate key.
-keytool -genkey -v -keystore attempo-app-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias attempo-alias
+keytool -genkey -v -keystore .keystore/android/attempo-app-key.jks -keyalg RSA -keysize 2048 -validity 10000 -alias attempo-alias
 
 
 # align apk
 zipalign -f -v -p 4 ./platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ./platforms/android/app/build/outputs/apk/release/app-release-unsigned-align.apk
 
 # apply signature. Key is in the .keystore directory in project root.
-apksigner sign --ks .keystore/android/attempo-app-key.jks --out terrama-data-collector.apk ./platforms/android/app/build/outputs/apk/release/app-release-unsigned-align.apk
+apksigner sign --ks .keystore/android/attempo-app-key.jks --out ./platforms/android/app/build/outputs/apk/signed/terrama-data-collector.apk ./platforms/android/app/build/outputs/apk/release/app-release-unsigned-align.apk
 
 # verify the apk's signature
-apksigner verify \ ~/Projects/workspace-mobile/TerraMAionic/terrama-data-collector.apk
+apksigner verify --verbose ./platforms/android/app/build/outputs/apk/signed/terrama-data-collector.apk
 ```
+
+## Show min and target android SDK version
+
+```
+apkanalyzer -h manifest min-sdk terrama-data-collector.apk
+apkanalyzer -h manifest target-sdk terrama-data-collector.apk
+```
+
 
 ## Deploy to android device
 
@@ -145,7 +153,7 @@ apksigner verify \ ~/Projects/workspace-mobile/TerraMAionic/terrama-data-collect
 $ ionic cordova run android --release
 
 # or use adb to push apk to device via USB.
-adb install platforms/android/app/build/outputs/apk/signed/terrama-data-collector.apk
+adb install ./platforms/android/app/build/outputs/apk/signed/terrama-data-collector.apk
 
 ```
 
