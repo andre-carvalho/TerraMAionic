@@ -14,7 +14,7 @@ import { Base64 } from '@ionic-native/base64';
 @Injectable()
 export class LocationsProvider {
 
-  private API_URL = '34.73.204.101';
+  private API_URL = '35.231.50.207';
 
   constructor( private base64: Base64, private storage: Storage, private datepipe: DatePipe, public http: HttpClient) {
     
