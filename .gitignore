@@ -3,6 +3,8 @@
 
 *.keystore
 
+*.apk
+
 *~
 *.sw[mnpcod]
 *.log
