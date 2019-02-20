@@ -17,13 +17,13 @@ I used the official instructions to start the project: https://ionicframework.co
 
 Create a blank project:
 ```
-$ ionic start TerraMAionic blank
+ionic start TerraMAionic blank
 ```
 
 Adding the android* platform:
 
 ```
-$ ionic cordova platform add android
+ionic cordova platform add android
 ```
 
 *Here is mandatory that you have in your environment the Android SDK and set the ANDROID_HOME environment variable if you want run this project in android device.
@@ -35,28 +35,30 @@ Install the Cordova and Ionic Native plugins.
 Add the geolocation plugin:
 
 ```
-$ ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"
-$ npm install --save @ionic-native/geolocation
+ionic cordova plugin add cordova-plugin-geolocation --variable GEOLOCATION_USAGE_DESCRIPTION="To locate you"
+npm install --save @ionic-native/geolocation
 ```
 
 Add the camera plugin:
 
 ```
-$ ionic cordova plugin add cordova-plugin-camera
-$ npm install --save @ionic-native/camera
+ionic cordova plugin add cordova-plugin-camera
+npm install --save @ionic-native/camera
 ```
 
 ## Debug at develop mode
 To debug in development mode using your browser.
 
 ```
-$ ionic cordova platform add browser
+ionic cordova platform add browser
 ```
 
 and run it:
 
 ```
-$ ionic cordova run browser
+ionic serve -l
+# OR 
+ionic cordova run browser
 ```
 
 ## Adding new pages
@@ -64,13 +66,13 @@ $ ionic cordova run browser
 To adding the new page called locations, use this command:
 
 ```
-$ ionic generate page Locations
+ionic generate page Locations
 ```
 
 Or:
 
 ```
-$ ionic g page Locations
+ionic g page Locations
 ```
 
 ## Generate images to start icon and splash
@@ -78,9 +80,9 @@ $ ionic g page Locations
 Works only if you have an account on ionic, so use this commands:
 
 ```
-$ ionic setup
-$ ionic signup
-$ ionic cordova resources -f
+ionic setup
+ionic signup
+ionic cordova resources -f
 ```
 
 ## Create a storage provider
@@ -90,9 +92,9 @@ http://www.fabricadecodigo.com/como-armazenar-dados-offline-com-ionic-storage/
 
 Commands:
 ```
-$ ionic cordova plugin add cordova-sqlite-storage --save
-$ npm install --save @ionic/storage
-$ ionic g provider LocationsProvider
+ionic cordova plugin add cordova-sqlite-storage --save
+npm install --save @ionic/storage
+ionic g provider LocationsProvider
 ```
 
 Edit your app.module.ts to include provider configurations.
@@ -150,7 +152,7 @@ apkanalyzer -h manifest target-sdk terrama-data-collector.apk
 ## Deploy to android device
 
 ```
-$ ionic cordova run android --release
+ionic cordova run android --release
 
 # or use adb to push apk to device via USB.
 adb install ./platforms/android/app/build/outputs/apk/signed/terrama-data-collector.apk

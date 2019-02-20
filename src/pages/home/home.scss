@@ -1,20 +1,19 @@
 page-home {
+
     ion-content {
-        background-image: url('../assets/imgs/bgfirstpage.jpeg');
-        background-repeat:no-repeat;
-        background-size:cover;
+        background-color: mintcream;
         width:100%;
     }
 
     .item-md {
         background-color: transparent;
-        color: white;
+        color: #3c3c3b;
         font-weight: bolder;
     }
 
     .text1, .text2, .text3, .text4 {
         text-align:center;
-        color: white;
+        color: #3c3c3b;
         font-size: medium;
     }
     .text2 {
@@ -31,7 +30,7 @@ page-home {
     }
 
     .button-md, .button-md:hover:not(.disable-hover) {
-        background-color: #091739;
+        background-color: #3c3c3b;
     }
 
     [text-wrap] .label-md{
@@ -45,10 +44,5 @@ page-home {
     }
     [col-6] .item-md.item-block .item-inner{
         border: none;
-    }
-    .attempoborder {
-        border-bottom: solid #fbe07b 2px;
-        margin-left: 30%;
-        margin-right: 30%;
     }
 }
