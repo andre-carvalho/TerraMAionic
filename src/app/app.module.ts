@@ -1,57 +1,65 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
-import { SplashScreen } from '@ionic-native/splash-screen';
-import { StatusBar } from '@ionic-native/status-bar';
-import { Geolocation } from '@ionic-native/geolocation';
-import { Camera } from '@ionic-native/camera';
+import { NgModule } from '@angular/core';
+import { RouteReuseStrategy } from '@angular/router';
+import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Camera } from '@ionic-native/camera/ngx';
 import { IonicStorageModule } from '@ionic/storage';
 import { DatePipe } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-import { Base64 } from '@ionic-native/base64';
+import { Base64 } from '@ionic-native/base64/ngx';
 
-import { MyApp } from './app.component';
-import { HomePage } from '../pages/home/home';
-import { BurneredPage } from '../pages/burnered/burnered';
-import { MapPage } from '../pages/map/map';
-import { LocationsPage } from '../pages/locations/locations';
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from '../app-routing.module';
+
+import { JwtModule, JWT_OPTIONS } from '@auth0/angular-jwt';
 import { LocationsProvider } from '../providers/locations/locations';
+import { JwtTokenAuthProvider } from '../providers/jwt-token-auth/jwt-token-auth';
+import { JwtTokenAuthGuardProvider } from '../providers/jwt-token-auth-guard/jwt-token-auth-guard';
+
+export function jwtOptionsFactory(storage) {
+  return {
+    tokenGetter: () => {
+      return storage.get('access_token');
+    },
+    whitelistedDomains: ['localhost:5000']
+  }
+}
 
 @NgModule({
-  declarations: [
-    MyApp,
-    HomePage,
-    BurneredPage,
-    MapPage,
-    LocationsPage
-  ],
+  declarations: [AppComponent],
+  entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(),
+    AppRoutingModule,
     IonicStorageModule.forRoot({
       name: '__terramadb',
          driverOrder: ['indexeddb', 'sqlite', 'websql']
     }),
-    HttpClientModule
-  ],
-  bootstrap: [IonicApp],
-  entryComponents: [
-    MyApp,
-    HomePage,
-    BurneredPage,
-    MapPage,
-    LocationsPage
+    HttpClientModule,
+    JwtModule.forRoot({
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+        deps: [Storage],
+      }
+    })
   ],
   providers: [
     StatusBar,
     SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     Camera,
     Geolocation,
-    LocationsProvider,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
     DatePipe,
     LocationsProvider,
-    Base64
-  ]
+    Base64,
+    JwtTokenAuthProvider,
+    JwtTokenAuthGuardProvider
+  ],
+  bootstrap: [AppComponent]
 })
 export class AppModule {}

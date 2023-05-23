@@ -21,6 +21,10 @@
     "src/**/*.spec.ts",
     "src/**/__tests__/*.ts"
   ],
+  "files.exclude": {
+      "**/.git": true,
+      "**/node_modules": true
+  },
   "compileOnSave": false,
   "atom": {
     "rewriteTsconfig": false

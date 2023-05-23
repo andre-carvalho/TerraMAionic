@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Router } from '@angular/router';
 import { BurneredPage } from '../burnered/burnered';
 
 @Component({
@@ -8,12 +8,23 @@ import { BurneredPage } from '../burnered/burnered';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  constructor(private router: Router) {
 
   }
 
+  onSubmit() {
+    if(this.login()){
+      this.goToBurnered();
+    }
+  }
+
   goToBurnered() {
-    this.navCtrl.push(BurneredPage);
+    this.router.navigate(['/burnered'])
+  }
+
+  private login(){
+    // TODO: Implements the call to login service
+    return false;
   }
 
 }

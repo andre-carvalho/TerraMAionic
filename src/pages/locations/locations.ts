@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController } from 'ionic-angular';
-import { AlertController } from 'ionic-angular';
-import { Camera, CameraOptions } from '@ionic-native/camera';
-import { Geolocation } from '@ionic-native/geolocation';
+import { NavController, NavParams, ToastController } from '@ionic/angular';
+import { AlertController } from '@ionic/angular';
+import { Camera, CameraOptions } from '@ionic-native/camera/ngx';
+import { Geolocation } from '@ionic-native/geolocation/ngx';
 import { LocationsProvider, Location, LocationList } from '../../providers/locations/locations';
 
 @Component({
@@ -32,10 +32,54 @@ export class LocationsPage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public geolocation: Geolocation,
     private camera: Camera, private locationsProvider: LocationsProvider,
-    private toast: ToastController, private alertCtrl: AlertController) {
+    private toastController: ToastController, private alertCtrl: AlertController) {
       this.currentLat = this.navParams.get('currentLat');
       this.currentLng = this.navParams.get('currentLng');
       this.startCamera = this.navParams.get('startCamera');
+  }
+
+  async presentToast(message: string) {
+    const toast = await this.toastController.create({
+      message: message,
+      duration: 1500,
+      position: 'bottom',
+      showCloseButton: false,
+    });
+    toast.present();
+  }
+
+  async presentAlert() {
+    const alert = await this.alertCtrl.create({
+      header: 'Serviço para envio de dados',
+      inputs: [
+        {
+          name: 'server_url',
+          value: 'http://'+this.locationsProvider.getServerURL(),
+          type: 'url'
+        }
+      ],
+      buttons: [
+        {
+          text: 'Cancelar',
+          role: 'cancel',
+          handler: data => {
+            console.log('Cancel clicked');
+          }
+        },
+        {
+          text: 'Confirmar',
+          handler: data => {
+            if (data.server_url) {
+              this.locationsProvider.setServerURL(data.server_url);
+            } else {
+              console.log('Input URL is undefined');
+              return false;
+            }
+          }
+        }
+      ]
+    });
+    alert.present();
   }
 
   ionViewDidLoad() {
@@ -76,7 +120,7 @@ export class LocationsPage {
         // removing from array of itens
         var index = this.locations.indexOf(item);
         this.locations.splice(index, 1);
-        this.toast.create({ message: 'Local removido.', duration: 1500, position: 'botton' }).present();
+        this.presentToast('Local removido.');
       })
   }
 
@@ -88,7 +132,7 @@ export class LocationsPage {
       this.model.photo = imageData;
      }).catch((error) => {
       console.log('Error on taking photo', error);
-      this.toast.create({ message: 'Falhou ao acionar a camera de seu dispositivo.', duration: 1500, position: 'botton' }).present();
+      this.presentToast('Falhou ao acionar a camera de seu dispositivo.');
      });
   }
 
@@ -110,21 +154,21 @@ export class LocationsPage {
 
     }).catch((error) => {
       console.log('Error getting location', error);
-      this.toast.create({ message: 'Falhou ao capturar sua localização.', duration: 1500, position: 'botton' }).present();
+      this.presentToast('Falhou ao capturar sua localização.');
     });
   }
 
   public save() {
     this.saveLocation()
       .then(() => {
-        this.toast.create({ message: 'Local salvo.', duration: 1500, position: 'botton' }).present();
+        this.presentToast('Local salvo.');
         this.model=undefined;
         this.createNewLocation();
         this.reloadLocations();
         this.catchLocation();
       })
       .catch(() => {
-        this.toast.create({ message: 'Erro ao salvar o local.', duration: 1500, position: 'botton' }).present();
+        this.presentToast('Erro ao salvar o local.');
       });
   }
 
@@ -148,37 +192,7 @@ export class LocationsPage {
   }
 
   public setServerURL() {
-    let alert = this.alertCtrl.create({
-      title: 'Serviço para envio de dados',
-      inputs: [
-        {
-          name: 'server_url',
-          value: 'http://'+this.locationsProvider.getServerURL(),
-          type: 'url'
-        }
-      ],
-      buttons: [
-        {
-          text: 'Cancelar',
-          role: 'cancel',
-          handler: data => {
-            console.log('Cancel clicked');
-          }
-        },
-        {
-          text: 'Confirmar',
-          handler: data => {
-            if (data.server_url) {
-              this.locationsProvider.setServerURL(data.server_url);
-            } else {
-              console.log('Input URL is undefined');
-              return false;
-            }
-          }
-        }
-      ]
-    });
-    alert.present();
+    this.presentAlert();
   }
 
   private sendToServer(location: Location, key: string) {
@@ -186,10 +200,10 @@ export class LocationsPage {
       .then(() => {
         location.send=true;
         this.locationsProvider.update(key, location);
-        this.toast.create({ message: 'Upload com sucesso.', duration: 1500, position: 'botton' }).present();
+        this.presentToast('Upload com sucesso.');
       })
       .catch(() => {
-        this.toast.create({ message: 'Erro ao enviar dados.', duration: 1500, position: 'botton' }).present();
+        this.presentToast('Erro ao enviar dados.');
       });
   }
 }
